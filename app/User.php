@@ -15,10 +15,6 @@ class User extends Authenticatable
      *
      * @var array
      */
-
-     protected $primaryKey = 'pk_codigo_user';
-     protected $keyType = 'string';
-
     protected $fillable = [
         'name', 'email', 'password',
     ];
