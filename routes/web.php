@@ -22,6 +22,10 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 //Centros Hospitalarios
-Route::get('guardarCentro', 'CentroHospitalarioController@crearCentros');
+Route::get('guardarFormCentro', 'CentroHospitalarioController@crearCentros')->name('formularioCentros');
 Route::post('saveCentro', 'CentroHospitalarioController@save')->name('save');
-Route::get('listarCentro', 'CentroHospitalarioController@mostrarCentros');
+Route::get('listarCentro', 'CentroHospitalarioController@mostrarCentros')->name('listCentro');
+Route::delete('eliminarCentro/{id}','CentroHospitalarioController@eliminarCentros')->name('deleteCentro');
+Route::get('editarFormCentro/{id}','CentroHospitalarioController@actualizarCentros')->name('editFormCentro');
+Route::patch('editarCentro/{id}','CentroHospitalarioController@editarCentro')->name('editCentro');
+

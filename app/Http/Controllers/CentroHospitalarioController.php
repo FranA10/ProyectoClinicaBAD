@@ -33,8 +33,29 @@ class CentroHospitalarioController extends Controller
 
     //funcion para mostrar todos los Centros hospitalarios
     public function mostrarCentros(){
-        $centros = CentroHospitalario::all();
+        $datosCentro['centros'] = CentroHospitalario::paginate(3);
         
-        return View('centro/listar', compact('centros'));
+        return View('sistema/centros_hospitalarios/listar', $datosCentro);
+    }
+
+    //funcion para eliminar centros Eliminar(no se deberia hacer)
+    public function eliminarCentros($pk_centro){
+        CentroHospitalario::destroy($pk_centro);
+
+        return back()->with('claveEliminarCentro','El Centro fue Eliminado!');
+    }
+
+    //funcion para Editar Centros
+    public function actualizarCentros($pk_centro){
+        $centro = CentroHospitalario::findOrFail($pk_centro);
+
+        return view('sistema/centros_hospitalarios/editar', compact('centro'));
+    }
+
+    public function editarCentro(Request $request, $pk_centro){
+        $datosCento = request()->except((['_token', '_method']));
+        CentroHospitalario::where('pk_centro', '=', $pk_centro)->update($datosCento);
+
+        return back()->with('claveEditarCentro','Centro modificado!');
     }
 }
