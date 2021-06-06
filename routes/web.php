@@ -19,8 +19,9 @@ Route::get('/', function () {
 
 
 Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
 
-
-Route::get('/prueba', 'PruebaController@centro');
+//Centros Hospitalarios
+Route::get('guardarCentro', 'CentroHospitalarioController@crearCentros');
+Route::post('saveCentro', 'CentroHospitalarioController@save')->name('save');
+Route::get('listarCentro', 'CentroHospitalarioController@mostrarCentros');
