@@ -38,7 +38,7 @@
                           <form action="{{ route('tipo-examen.destroy', $tipoex->pk_tipo_examen) }}" method="POST" class="eliminarRegistro">
                            @method('DELETE')
                            @csrf 
-                          <button class="btn btn-warning btn-sm"><i class="fas fa-pencil-alt"></i></button> 
+                          <a class="btn btn-warning btn-sm" href="{{url('tipo-examen/'.$tipoex->pk_tipo_examen.'/edit')}}"><i class="fas fa-pencil-alt"></i></a> 
                             <button type="submit" class="btn btn-danger btn-sm">
                                 <i class="fas fa-trash-alt"></i>
                             </button>
@@ -46,7 +46,7 @@
                         </td>
                       <td>{{$tipoex->nombre_tipo_exam}}</td>
                       <td>{{$tipoex->descripcion_tipo_exam}} </td>
-                      <td><span class="tag tag-success">{{$tipoex->precio}} </span></td>
+                      <td><span class="tag tag-success">$ {{number_format($tipoex->precio,2)}} </span></td>
                     </tr>
                     @endforeach
                   </table>
@@ -70,10 +70,22 @@
 @if(session('eliminar')=='ok')
 <script>
     Swal.fire(
-      '¡Eliminado!',
+      '¡Actualizado!',
       'Registro eliminado con éxito',
       'success'
     )
+</script>
+@endif
+
+@if(session('actualizar')=='ok')
+<script>
+Swal.fire({
+  position: 'center',
+  icon: 'success',
+  title: 'Actualizado con éxito',
+  showConfirmButton: false,
+  timer: 1500
+})
 </script>
 @endif
 
