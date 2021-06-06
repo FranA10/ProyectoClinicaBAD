@@ -17,8 +17,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
 Auth::routes();
+
 Route::get('/home', 'HomeController@index')->name('home');
 
 //Centros Hospitalarios
@@ -28,4 +28,3 @@ Route::get('listarCentro', 'CentroHospitalarioController@mostrarCentros')->name(
 Route::delete('eliminarCentro/{id}','CentroHospitalarioController@eliminarCentros')->name('deleteCentro');
 Route::get('editarFormCentro/{id}','CentroHospitalarioController@actualizarCentros')->name('editFormCentro');
 Route::patch('editarCentro/{id}','CentroHospitalarioController@editarCentro')->name('editCentro');
-
