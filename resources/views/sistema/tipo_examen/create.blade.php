@@ -14,7 +14,7 @@
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <form role="form" action="/tipo-examen" method="POST" >
+              <form role="form" action="{{ url('tipo-examen')}}" method="POST" >
                 @csrf
                 <!-- text input -->
                 <div class="row">
@@ -45,7 +45,7 @@
  
                 </div>
 <div class="row">
-    <a class="btnt btn-dark btn-sm" href="tipo-examen/create" tabindex="5"> Cancelar</a>
+    <a class="btnt btn-dark btn-sm" href="{{ url('/tipo-examen')  }}" tabindex="5"> Cancelar</a>
     <button class="btn btn-primary btn-sm" tabindex="4">Crear</button>
 </div>
               </form>
