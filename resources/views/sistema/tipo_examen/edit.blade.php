@@ -10,7 +10,7 @@
     <div class="col-md-11">
         <div class="card card-primary">
             <div class="card-header">
-              <h3 class="card-title">Editar Tipo de Examen</h3>
+              <h3 class="card-title">Editar</h3>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
