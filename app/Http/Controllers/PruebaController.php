@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Centro;
+use App\CentroHospitalario;
 use Illuminate\Http\Request;
 
 class PruebaController extends Controller
 {
     public function centro()
     {
-        $nuevo = new Centro;
+        $nuevo = new CentroHospitalario();
         $nuevo->id_centro="3";
         $nuevo->nom_centro="Centro";
         $nuevo->direccion="direccion";
@@ -20,7 +20,7 @@ class PruebaController extends Controller
     //    $var2=Centro::find(1);
     //    $var2->nom_centro="centro2cambiadott";
     //    $var2->save();
-        $var= Centro::all();
+        $var= CentroHospitalario::all();
         return $var;
     }
 }
