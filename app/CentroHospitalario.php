@@ -10,5 +10,9 @@ class CentroHospitalario extends Model
     protected $primaryKey = 'pk_centro';
     protected $keyType = 'string';
     public $timestamps = false;
-
+    
+    //Relacion de uno a muchos (inversa)
+    public function usuarios(){
+        return $this->hasMany('App\SisUsuario', 'pk_centro');
+    }
 }
