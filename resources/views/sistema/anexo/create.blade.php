@@ -26,7 +26,7 @@
                     </div>
                     <div class="col-4">
                         <div class="form-group">
-                            <label>Descripcion</label>
+                            <label>Descripción</label>
                             <input type="text" id="descripcion" name="descripcion" class="form-control" placeholder="" >
                           </div>
                     </div>
@@ -39,12 +39,11 @@
                     
                   <div class="col-4">
                     <label></label>
-                    
-                    <a type="button" class="btn btn-success btn-lg btn-block"> Crear</a>
-
+                    <button class="btn btn-success btn-lg btn-block" tabindex="4">Crear</button>
                   </div>
                   <div class="col-4">
                     <label></label>
+
                     <a type="button" href="{{ url('/anexos')  }}" tabindex="5" class="btn btn-danger btn-lg btn-block"> Cancelar</a>
 
                     
@@ -61,3 +60,24 @@
 </div>
 
   @endsection
+
+  
+  @section('ccs')
+<link rel="stylesheet" href="css/sweetalert2.min.css">
+@stop
+
+@section('js')
+<script src="{{ asset('static/js/sweetalert2.all.min.js') }}"></script>
+  @if(session('crear')=='ok')
+<script>
+Swal.fire({
+  position: 'center',
+  icon: 'success',
+  title: 'Creado con éxito',
+  showConfirmButton: false,
+  timer: 1500
+})
+</script>
+@endif
+
+@stop

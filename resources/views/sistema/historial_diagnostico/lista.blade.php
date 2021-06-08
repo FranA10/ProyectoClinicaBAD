@@ -1,7 +1,7 @@
 @extends('adminlte::page')
 
 @section('content_header')
-    <h3>Anexos </h3>
+    <h3>Historico de diagnosticos</h3>
 @endsection
 
 
@@ -13,8 +13,7 @@
               <div class="card">
                 <div class="card-header">
             
-                 <a class="btn btn-success" href="{{ url('/anexos/create')  }}">Crear anexo</a>
-  
+                 <a class="btn btn-success" href="{{ url('/historial_diagnostico/create')  }}">Agregar historial</a>
                   <div class="card-tools">
                     <div class="input-group input-group-sm" style="width: 150px;">
                     </div>
@@ -25,11 +24,11 @@
                   <table class="table table-hover">
                     <tr>
                       <th>#</th>
-                      <th>Direccion fisica</th>
-                      <th>Descripcion</th>
-                      <th>Tipo de anexo</th>
+                      <th>Fecha</th>
+                      <th>Hora</th>
+                      <th>Observaciones</th>
                     </tr>
-                    @foreach($anexos as $anexo)
+                    @foreach($hist_diagnostico as $historial)
                     <tr>
                       <td>
                           <form action="" method="POST" class="eliminarRegistro">

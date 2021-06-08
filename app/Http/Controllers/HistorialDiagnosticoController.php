@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Anexos;
+use App\HistorialDiagnostico;
 use Illuminate\Http\Request;
 
-class AnexosController extends Controller
+class HistorialDiagnosticoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,8 @@ class AnexosController extends Controller
      */
     public function index()
     {
-        $anexos=Anexos::paginate(5);
-        return view('sistema.anexo.lista')->with('anexos',$anexos) ;
+        $hist_diagnostico=HistorialDiagnostico::paginate(5);
+        return view('sistema.historial_diagnostico.lista')->with('hist_diagnostico',$hist_diagnostico) ;
     }
 
     /**
@@ -25,7 +25,7 @@ class AnexosController extends Controller
      */
     public function create()
     {
-        return view('sistema.anexo.create');
+        return view('sistema.historial_diagnostico.create');
     }
 
     /**
@@ -36,12 +36,13 @@ class AnexosController extends Controller
      */
     public function store(Request $request)
     {
-        $anexos= new Anexos();
-        $anexos->id_anexo=Anexos::count()+1;
-        $anexos->direccion_fisica= $request->get('direccion');
-        $anexos->descripcion_anexo= $request->get('descripcion');
-        $anexos->save();
-        return redirect('/anexos');
+        $diagnostico= new HistorialDiagnostico();
+        $diagnostico->pk_diagnostico=HistorialDiagnostico::count()+1;
+        $diagnostico->fecha= $request->get('fecha');
+        $diagnostico->hora= $request->get('hora');
+        $diagnostico->observaciones=$request->get('observaciones');
+        $diagnostico->save();
+        return redirect('/historial_diagnostico');
     }
 
     /**
@@ -86,7 +87,7 @@ class AnexosController extends Controller
      */
     public function destroy($id)
     {
-        Anexos::destroy($id);
-        return redirect('/anexos')->with('eliminar','ok');
+        TipoExamen::destroy($id);
+        return redirect('/')->with('eliminar','ok');
     }
 }
