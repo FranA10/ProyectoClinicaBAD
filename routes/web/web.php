@@ -28,3 +28,7 @@ Route::get('listarCentro', 'CentroHospitalarioController@mostrarCentros')->name(
 Route::delete('eliminarCentro/{id}','CentroHospitalarioController@eliminarCentros')->name('deleteCentro');
 Route::get('editarFormCentro/{id}','CentroHospitalarioController@actualizarCentros')->name('editFormCentro');
 Route::patch('editarCentro/{id}','CentroHospitalarioController@editarCentro')->name('editCentro');
+
+
+//Administracion de usuarios y roles
+Route::resource('/usuarios', UsuarioController::class)->names('admin.usuarios');

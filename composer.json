@@ -15,7 +15,12 @@
         "jeroennoten/laravel-adminlte": "^3.6",
         "laravel/framework": "^7.29",
         "laravel/tinker": "^2.5",
-        "laravel/ui": "^2.4",
+
+        "laravel/ui": "2.4",
+        "laravelcollective/html": "^6.2",
+        "livewire/livewire": "^2.4",
+        "spatie/laravel-permission": "^4.2",
+
         "yajra/laravel-oci8": "7"
     },
     "require-dev": {
