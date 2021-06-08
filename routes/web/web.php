@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\admin\UsuarioController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,4 +32,4 @@ Route::patch('editarCentro/{id}','CentroHospitalarioController@editarCentro')->n
 
 
 //Administracion de usuarios y roles
-Route::resource('/usuarios', UsuarioController::class)->names('admin.usuarios');
+Route::resource('/usuarios', 'Admin\UsuarioController')->names('admin.usuarios');
