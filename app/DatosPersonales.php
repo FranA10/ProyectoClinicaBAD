@@ -31,8 +31,8 @@ class DatosPersonales extends Model
         return $this->belongsTo('App\Tipo','pk_codsangre');
     }
     
-    //Relacion uno a uno
-    public function usuario(){
-        return $this->hasOne('App\SisUsuario','pk_num_personal');
+    //Relacion de uno a muchos (inversa)
+    public function centro(){
+        return $this->belongsTo('App\CentroHospitalario','pk_centro');
     }
 }

@@ -12,7 +12,7 @@ class CentroHospitalario extends Model
     public $timestamps = false;
     
     //Relacion de uno a muchos (inversa)
-    public function usuarios(){
-        return $this->hasMany('App\SisUsuario', 'pk_centro');
+    public function datosPersonales(){
+        return $this->hasMany('App\DatosPersonales', 'pk_centro');
     }
 }
