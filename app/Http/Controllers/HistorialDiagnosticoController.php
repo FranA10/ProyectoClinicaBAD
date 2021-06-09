@@ -14,7 +14,7 @@ class HistorialDiagnosticoController extends Controller
      */
     public function index()
     {
-        $hist_diagnostico=HistorialDiagnostico::paginate(5);
+        $hist_diagnostico=HistorialDiagnostico::paginate(20);
         return view('sistema.historial_diagnostico.lista')->with('hist_diagnostico',$hist_diagnostico) ;
     }
 
@@ -39,7 +39,7 @@ class HistorialDiagnosticoController extends Controller
         $diagnostico= new HistorialDiagnostico();
         $diagnostico->pk_diagnostico=HistorialDiagnostico::count()+1;
         
-        // $diagnostico->fecha= ($request->get('fecha'))->format('d/m/y');
+        $diagnostico->fecha= ($request->get('fecha'));
         // $diagnostico->hora= $request->get('hora');
         $diagnostico->observaciones=$request->get('observaciones');
         $diagnostico->save();
@@ -88,7 +88,7 @@ class HistorialDiagnosticoController extends Controller
      */
     public function destroy($id)
     {
-        TipoExamen::destroy($id);
-        return redirect('/')->with('eliminar','ok');
+        HistorialDiagnostico::destroy($id);
+        return redirect('/historial_diagnostico')->with('eliminar','ok');
     }
 }

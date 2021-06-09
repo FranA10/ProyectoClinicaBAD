@@ -31,7 +31,8 @@
                     @foreach($hist_diagnostico as $historial)
                     <tr>
                       <td>
-                          <form action="" method="POST" class="eliminarRegistro">
+                        <form action="{{ route('historial_diagnostico.destroy', $historial->pk_diagnostico)}}" method="POST" class="eliminarRegistro">
+                          
                            @method('DELETE')
                            @csrf 
                           <button class="btn btn-warning btn-sm"><i class="fas fa-pencil-alt"></i></button> 
@@ -40,8 +41,8 @@
                             </button>
                         </form>
                         </td>
-                      <td></td>
-                      <td></td>
+                      <td>{{$historial->fecha}}</td>
+                      <td>{{$historial->hora}}</td>
                       <td>{{$historial->observaciones}}<span class="tag tag-success"> </span></td>
                     </tr>
                     @endforeach
@@ -79,7 +80,7 @@ $('.eliminarRegistro').submit(function(e){
 e.preventDefault();
 Swal.fire({
   title: '¿Estás seguro?',
-  text: "Este Tipo de Examen será eliminado permanentemente",
+  text: "Este diagnostico sera eliminado permanentemente",
   icon: 'warning',
   showCancelButton: true,
   confirmButtonColor: '#3085d6',

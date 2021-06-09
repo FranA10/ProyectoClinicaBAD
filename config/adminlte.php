@@ -302,22 +302,31 @@ return [
                 ],
             ],
         ],
-        ['header' => 'labels'],
+
+        
+       
+        ['header' => 'Consulta medica'],
         [
-            'text'       => 'important',
-            'icon_color' => 'red',
+            'text'       => 'Historico de diagnosticos',
+            'icon' => 'fas fa-hospital-user',
+            'url'        => '/historial_diagnostico',
+        ],
+        [
+            'text'       => 'Categorias de diagnostico',
+            'icon'       =>   'fas fa-procedures',
+            'url'        => '/cat_diagnostico',
+        ],
+        [
+            'text'       => 'Consulta',
+            'icon' => 'fas fa-clinic-medical',
             'url'        => '#',
         ],
         [
-            'text'       => 'warning',
-            'icon_color' => 'yellow',
-            'url'        => '#',
+            'text'       => 'Signos vitales',
+            'icon' => 'fas fa-stethoscope',
+            'url'        => '/signo-vital',
         ],
-        [
-            'text'       => 'information',
-            'icon_color' => 'cyan',
-            'url'        => '#',
-        ],
+        
     ],
 
     /*

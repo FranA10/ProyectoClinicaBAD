@@ -14,7 +14,7 @@ class SignoVitalController extends Controller
      */
     public function index()
     {
-        $signosvital=SignoVital::paginate(5);
+        $signosvital=SignoVital::paginate(10);
         return view('sistema.Signo_Vital.lista')->with('signosvital',$signosvital) ;
     }
 

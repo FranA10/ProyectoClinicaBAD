@@ -23,15 +23,15 @@
                 <div class="card-body table-responsive p-0">
                   <table class="table table-hover">
                     <tr>
-                      <th>#</th>
+                      <th></th>
                       <th>Nombre</th>
                       <th>Descripcion</th>
                      
                     </tr>
-                    @foreach($cat_diagnostico as $categoria)
+                    @foreach($catdiagnostico as $categoria)
                     <tr>
                       <td>
-                          <form action="" method="POST" class="eliminarRegistro">
+                          <form action="{{ route('cat_diagnostico.destroy', $categoria->pk_cod_inter)}}" method="POST" class="eliminarRegistro">
                            @method('DELETE')
                            @csrf 
                           <button class="btn btn-warning btn-sm"><i class="fas fa-pencil-alt"></i></button> 
@@ -79,7 +79,7 @@ $('.eliminarRegistro').submit(function(e){
 e.preventDefault();
 Swal.fire({
   title: '¿Estás seguro?',
-  text: "Este Tipo de Examen será eliminado permanentemente",
+  text: "Esta categoria de diagnostico será eliminado permanentemente",
   icon: 'warning',
   showCancelButton: true,
   confirmButtonColor: '#3085d6',

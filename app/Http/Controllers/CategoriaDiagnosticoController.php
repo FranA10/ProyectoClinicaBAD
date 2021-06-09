@@ -14,8 +14,8 @@ class CategoriaDiagnosticoController extends Controller
      */
     public function index()
     {
-        $cat_diagnostico = CatDiagnostico::paginate(5);
-        return view('sistema.cat_diagnostico.lista')->with('cat_diagnostico',$cat_diagnostico);
+        $catdiagnostico = CatDiagnostico::paginate(5);
+        return view('sistema.cat_diagnostico.lista')->with('catdiagnostico',$catdiagnostico);
     }
 
     /**
@@ -84,12 +84,12 @@ class CategoriaDiagnosticoController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  string  $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        TipoExamen::destroy($id);
-        return redirect('/')->with('eliminar','ok');
+        CatDiagnostico::destroy($id);
+        return redirect('/cat_diagnostico')->with('eliminar','ok');
     }
 }

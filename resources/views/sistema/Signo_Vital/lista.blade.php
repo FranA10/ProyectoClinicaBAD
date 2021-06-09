@@ -1,7 +1,7 @@
 @extends('adminlte::page')
 
 @section('content_header')
-    <h3>Signos vitales </h3>
+    {{-- <h3>Signos vitales </h3> --}}
 @endsection
 
 
@@ -12,8 +12,8 @@
             <div class="col-md-12">
               <div class="card">
                 <div class="card-header">
-                 <a class="btn btn-primary" href="{{ url('/signo-vital/create')  }}">Crear</a>
-  
+                 {{-- <a class="btn btn-primary" href="{{ url('/signo-vital/create')  }}">Crear</a> --}}
+                  <h3>Signos vitales </h3>
                   <div class="card-tools">
                     <div class="input-group input-group-sm" style="width: 150px;">
                     </div>
@@ -23,14 +23,11 @@
                 <div class="card-body table-responsive p-0">
                   <table class="table table-hover">
                     <tr>
-                      <th>#</th>
-                      <th>Pulso</th>
-                      <th>Temperatura</th>
-                      <th>Talla</th>
-                      <th>Peso</th>
-                      <th>Estatura</th>
-                      <th>Presion</th>
-                      <th>Ritmo cardiaco</th>
+                      <th></th>
+                      <th>Nombre</th>
+                      <th>Valor</th>
+                      <th>Consulta</th>
+                     
                     </tr>
                     @foreach($signosvital as $signo)
                     <tr>
@@ -44,9 +41,9 @@
                             </button>
                         </form>
                         </td>
-                      <td></td>
-                      <td>}</td>
-                      <td><span class="tag tag-success"> </span></td>
+                      <td>{{$signo->nombre_signo}}</td>
+                      <td>{{$signo->valor_signo}}</td>
+                    
                     </tr>
                     @endforeach
                   </table>
