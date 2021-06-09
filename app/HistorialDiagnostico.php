@@ -11,4 +11,6 @@ class HistorialDiagnostico extends Model
     public $timestamps = false;
     protected $dateFormat = 'DD-MON-RR';
 
+    
+
 }

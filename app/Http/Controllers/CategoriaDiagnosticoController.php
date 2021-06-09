@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\HistorialDiagnostico;
+use App\CatDiagnostico;
 use Illuminate\Http\Request;
 
-class HistorialDiagnosticoController extends Controller
+class CategoriaDiagnosticoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,8 @@ class HistorialDiagnosticoController extends Controller
      */
     public function index()
     {
-        $hist_diagnostico=HistorialDiagnostico::paginate(5);
-        return view('sistema.historial_diagnostico.lista')->with('hist_diagnostico',$hist_diagnostico) ;
+        $cat_diagnostico = CatDiagnostico::paginate(5);
+        return view('sistema.cat_diagnostico.lista')->with('cat_diagnostico',$cat_diagnostico);
     }
 
     /**
@@ -25,7 +25,7 @@ class HistorialDiagnosticoController extends Controller
      */
     public function create()
     {
-        return view('sistema.historial_diagnostico.create');
+        return view('sistema.cat_diagnostico.create');
     }
 
     /**
@@ -36,14 +36,15 @@ class HistorialDiagnosticoController extends Controller
      */
     public function store(Request $request)
     {
-        $diagnostico= new HistorialDiagnostico();
-        $diagnostico->pk_diagnostico=HistorialDiagnostico::count()+1;
+        $categoria= new CatDiagnostico();
+        $categoria->pk_cod_inter=CatDiagnostico::count()+1;
         
-        // $diagnostico->fecha= ($request->get('fecha'))->format('d/m/y');
-        // $diagnostico->hora= $request->get('hora');
-        $diagnostico->observaciones=$request->get('observaciones');
-        $diagnostico->save();
-        return redirect('/historial_diagnostico');
+   
+        $categoria->nombre_diagnostico=$request->get('Nombre');
+        $categoria->descripcion=$request->get('Descripcion');
+
+        $categoria->save();
+        return redirect('/cat_diagnostico');
     }
 
     /**
