@@ -18,8 +18,8 @@ class CentroHospitalarioController extends Controller
        
         $validator = $this->validate($request,[
             'pk_centro'=>'required|string|max:7|unique:centro_hospitalario',
-            'nom_centro'=>'required|string|max:25',
-            'direccion'=>'required|string|max:25',
+            'nom_centro'=>'required|string|max:50',
+            'direccion'=>'required|string|max:75',
             'telefono'=>'required|string|max:25',
             'num_registro'=>'required|string|max:25',
             'estado'=>'required|int'

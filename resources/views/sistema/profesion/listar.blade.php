@@ -1,41 +1,35 @@
 @extends('adminlte::page')
 
-@section('title','Lista de Centros')
+@section('title','Lista de Profesiones')
 @section('content_header')
-    <h2 class="text-center mb-5">Centros Hospitalarios</h2>
+    <h2 class="text-center mb-5">Tipos de Profesiones</h2>
 @endsection
 
 @section('content')
 <div class="conteiner mt-2">
     <div class="card justify-content-center">
         <div class="card-header">
-            <a class="btn btn-success mb-4" href="{{ route('formularioCentros')  }}">Agregar Centro</a>
+            <a class="btn btn-success mb-4" href="{{ route('formPF')  }}">Agregar Profesion</a>
             <table class="table table-bordered table-stripied text-center">
                 <thead>
                     <tr>
                         <th>Codigo</th>
                         <th>Nombre</th>
-                        <th>Dirreccion</th>
-                        <th>Telefono</th>
-                        <th>N° registro</th>
                         <th>Estado</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($centros as $datos)
+                    @foreach ($profesiones as $datos)
                     <tr>
-                        <td>{{ $datos->pk_centro }}</td>
-                        <td>{{ $datos->nom_centro }}</td>
-                        <td>{{ $datos->direccion }}</td>
-                        <td>{{ $datos->telefono }}</td>
-                        <td>{{ $datos->num_registro }}</td>
+                        <td>{{ $datos->pk_profesion }}</td>
+                        <td>{{ $datos->nombre }}</td>
                         <td>{{ $datos->estado }}</td>
                         <td>
-                            <a href="{{ route ('editFormCentro', $datos->pk_centro) }}" class="btn btn-primary md-1">
+                            <a href="{{ route ('editFormPF', $datos->pk_profesion) }}" class="btn btn-primary md-1">
                                 <i class="fas fa-pencil-alt"></i>
                             </a>
-                            <form action="{{ route('deleteCentro', $datos->pk_centro) }}" method="POST" class="eliminarRegistro">
+                            <form action="{{ route('deletePF', $datos->pk_profesion) }}" method="POST" class="eliminarRegistro">
                                 @csrf @method('DELETE')
                                 <button type="submit" class="btn btn-danger">
                                     <i class="fas fa-trash-alt"></i>
@@ -46,7 +40,7 @@
                     @endforeach
                 </tbody>
             </table>
-            {{ $centros->links() }}
+            {{ $profesiones->links() }}
         </div>
     </div>
 </div>
@@ -60,7 +54,7 @@
 <script src="{{ asset('static/js/sweetalert2.all.min.js') }}"></script>
 
 <!-- Mensaje de confirmacion flash -->
-@if (session('claveEliminarCentro')=='El Centro fue Eliminado!')
+@if (session('claveEliminarProfesion')=='OK')
     <script>
         Swal.fire(
             '¡Eliminado!',
@@ -75,7 +69,7 @@
     e.preventDefault();
     Swal.fire({
       title: '¿Estás seguro?',
-      text: "La Clinica/Hospital será eliminado permanentemente",
+      text: "Esta profesion será eliminado permanentemente",
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',

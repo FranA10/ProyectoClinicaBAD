@@ -35,5 +35,13 @@ Route::post('ejecutarProceso', 'TipoSangreController@ejecutar')->name('crearTS')
 Route::get('listarTipoSangre', 'TipoSangreController@mostrarTipos')->name('listarTS');
 Route::delete('eliminarTipo/{id}','TipoSangreController@eliminarTipo')->name('deleteTS');
 
+//Profesion
+Route::get('guardarFormProfesion', 'ProfesionController@verFormProfesion')->name('formPF');
+Route::post('saveProfesion', 'ProfesionController@guardarProfesion')->name('savePF');
+Route::get('listarProfesiones', 'ProfesionController@mostrarProfesiones')->name('listPF');
+Route::delete('eliminarProfesion/{id}','ProfesionController@eliminarProfesion')->name('deletePF');
+Route::get('editarFormProfesion/{id}','ProfesionController@actualizarProfesion')->name('editFormPF');
+Route::patch('editarProfesion/{id}','ProfesionController@editarProfesion')->name('editPF');
+
 //Administracion de usuarios y roles
 Route::resource('/usuarios', UsuarioController::class)->names('admin.usuarios');
