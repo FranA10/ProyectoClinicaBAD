@@ -319,7 +319,7 @@ return [
         [
             'text'       => 'Consulta',
             'icon' => 'fas fa-clinic-medical',
-            'url'        => '#',
+            'url'        => '/consulta_medica',
         ],
         [
             'text'       => 'Signos vitales',

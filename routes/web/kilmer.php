@@ -7,4 +7,5 @@ Route::resource('signo-vital', 'SignoVitalController');
 Route::resource('anexos', 'AnexosController'); 
 Route::resource('historial_diagnostico', 'HistorialDiagnosticoController'); 
 Route::resource('cat_diagnostico', 'CategoriaDiagnosticoController'); 
+Route::resource('consulta_medica', 'ConsultaMedicaController'); 
 
