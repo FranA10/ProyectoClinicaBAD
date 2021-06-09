@@ -29,6 +29,11 @@ Route::delete('eliminarCentro/{id}','CentroHospitalarioController@eliminarCentro
 Route::get('editarFormCentro/{id}','CentroHospitalarioController@actualizarCentros')->name('editFormCentro');
 Route::patch('editarCentro/{id}','CentroHospitalarioController@editarCentro')->name('editCentro');
 
+//Tipo Sangre
+Route::get('procesoTipoSangre', 'TipoSangreController@vistaProceso')->name('formTS');
+Route::post('ejecutarProceso', 'TipoSangreController@ejecutar')->name('crearTS');
+Route::get('listarTipoSangre', 'TipoSangreController@mostrarTipos')->name('listarTS');
+Route::delete('eliminarTipo/{id}','TipoSangreController@eliminarTipo')->name('deleteTS');
 
 //Administracion de usuarios y roles
 Route::resource('/usuarios', UsuarioController::class)->names('admin.usuarios');
