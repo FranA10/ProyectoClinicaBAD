@@ -14,6 +14,13 @@ class UsuarioController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('can:admin.usuarios.index')->only('index');
+        $this->middleware('can:admin.usuarios.edit')->only('edit', 'update');
+
+    }
+
     public function index()
     {
         //

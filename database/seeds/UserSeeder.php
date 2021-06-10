@@ -30,5 +30,7 @@ class UserSeeder extends Seeder
             'email'=> 'denisse@gmail.com',
             'password' => bcrypt('adminadmin')
         ])->assignRole('Laboratorista');
+
+        factory(App\User::class, 25)->create();
     }
 }
