@@ -17,7 +17,7 @@
                 <div class="row">
                     {{-- Aqui esta el formulario de la consulta --}}
                     <div class="col-12">
-                        <form role="form" action="{{ url('historial_diagnostico')}}" method="POST" >
+                        <form role="form" action="{{ url('consulta_medica')}}" method="POST" >
                             @csrf 
                             <!-- text input -->
                             <div class="row">
@@ -69,11 +69,22 @@
                                   </div>
                                   <div class="col-3">
                                     <div class="form-group">
-                                        <label>Observaciones</label>
-                                        <input type="text area" id="observaciones" name="observaciones" class="form-control" placeholder="" >
+                                        <label>Indicaciones</label>
+                                        <input type="text area" id="indicaciones" name="indicaciones" class="form-control" placeholder="" >
                                       </div>
                                   </div>   
                             </div>
+                            <div class="row">
+                              <div class="col-3">
+                                {{-- <label></label> --}}
+                                <button class="btn btn-success btn-lg btn-block" tabindex="4">Guardar</button>
+                              </div>
+                              <div class="col-3">
+                                {{-- <label></label> --}}
+            
+                                <a type="button" href="{{ url('/consulta_medica')  }}" tabindex="5" class="btn btn-danger btn-lg btn-block"> Regresar</a>                    
+                              </div>
+                          </div>
                         </form>
                         <hr>
                     </div>
@@ -92,12 +103,12 @@
                           <div class="tab-content" id="myTabContent">
                             <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                                 <div class="row">
-                                    <div class="col-4">
+                                    <div class="col-3">
                                         <label></label>
                                         <button class="btn btn-info  btn-block" tabindex="4">Agregar</button>
                                     </div>
                                         
-                                    <div class="col-4">
+                                    <div class="col-5">
                                         <div class="form-group">
                                             <label></label>
                                             <input type="text"  id="nombre" name="nombre" class="form-control" placeholder="Nombre">

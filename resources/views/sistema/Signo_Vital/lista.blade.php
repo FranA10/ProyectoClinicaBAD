@@ -43,6 +43,8 @@
                         </td>
                       <td>{{$signo->nombre_signo}}</td>
                       <td>{{$signo->valor_signo}}</td>
+                      <td></td>
+
                     
                     </tr>
                     @endforeach

@@ -14,7 +14,7 @@ class ConsultaMedicaController extends Controller
      */
     public function index()
     {
-        $consulta_medica = ConsultaMedica::paginate(5);
+        $consulta_medica = ConsultaMedica::paginate(10);
         return view('sistema.consulta_medica.lista')->with('consulta_medica',$consulta_medica);
     }
 
@@ -36,15 +36,23 @@ class ConsultaMedicaController extends Controller
      */
     public function store(Request $request)
     {
-        $categoria= new CatDiagnostico();
-        $categoria->pk_cod_inter=CatDiagnostico::count()+1;
+        $consulta= new ConsultaMedica();
+        $consulta->pk_consulta=ConsultaMedica::count()+1;
         
    
-        $categoria->nombre_diagnostico=$request->get('Nombre');
-        $categoria->descripcion=$request->get('Descripcion');
+        $consulta->fecha=$request->get('fecha');
+        $consulta->area_consulta=$request->get('area');
+        $consulta->indicaciones=$request->get('indicaciones');
+        $consulta->pre_diagnostico=$request->get('pre_diagnostico');
+        $consulta->sintomatologia=$request->get('Sintomatologia');
+        $consulta->exam_fisico=$request->get('examen');
+        $consulta->consulta_por=$request->get('consultado_por');
 
-        $categoria->save();
-        return redirect('/cat_diagnostico');
+
+
+        
+        $consulta->save();
+        return NULL;
     }
 
     /**

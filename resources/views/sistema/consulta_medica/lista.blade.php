@@ -30,18 +30,24 @@
                 <div class="card-body table-responsive p-0">
                   <table class="table table-hover">
                     <tr>
-                      <th></th>
                       <th>Fecha</th>
                       <th>Consultada por</th>
                       
                       <th>Examen fisico</th>
                       
                       <th>Area de consulta</th>
+                      <th></th>
+
                     </tr>
                     @foreach($consulta_medica as $consulta)
                     <tr>
+                     
+                      <td>{{$consulta->fecha}}</td>
+                      <td>{{$consulta->consulta_por}}</td>
+                      <td>{{$consulta->exam_fisico}}</td>
+                      <td>{{$consulta->area_consulta}}<span class="tag tag-success"> </span></td>
                       <td>
-                        <form action="{{ route('historial_diagnostico.destroy', $historial->pk_diagnostico)}}" method="POST" class="eliminarRegistro">
+                        <form action="{{ route('historial_diagnostico.destroy', $consulta->pk_consulta)}}" method="POST" class="eliminarRegistro">
                           
                            @method('DELETE')
                            @csrf 
@@ -50,10 +56,7 @@
                                 <i class="fas fa-trash-alt"></i>
                             </button>
                         </form>
-                        </td>
-                      <td></td>
-                      <td></td>
-                      <td><span class="tag tag-success"> </span></td>
+                      </td>
                     </tr>
                     @endforeach
                   </table>
