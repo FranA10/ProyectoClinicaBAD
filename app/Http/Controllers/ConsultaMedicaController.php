@@ -105,7 +105,7 @@ class ConsultaMedicaController extends Controller
         
         $consulta->save();
         
-        return redirect('/consulta_medica')->with('actualizar','ok');
+        return redirect('/consulta_medica')->with('Actualizar','ok');
     }
     
 
