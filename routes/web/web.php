@@ -23,6 +23,11 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+//Procesos Almacenados Configuracion Inicial
+Route::get('procesosRoot', 'RootConfigController@vistaProceso')->name('configuracionRoot');
+Route::post('ejecutarProcesoES', 'RootConfigController@ejecutarES')->name('crearES');
+Route::post('ejecutarProcesoGN', 'RootConfigController@ejecutarGN')->name('crearGN');
+
 //Centros Hospitalarios
 Route::get('guardarFormCentro', 'CentroHospitalarioController@crearCentros')->name('formularioCentros');
 Route::post('saveCentro', 'CentroHospitalarioController@save')->name('save');
