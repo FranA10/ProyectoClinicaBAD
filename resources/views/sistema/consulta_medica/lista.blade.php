@@ -51,7 +51,8 @@
                           
                            @method('DELETE')
                            @csrf 
-                          <button class="btn btn-warning btn-sm"><i class="fas fa-pencil-alt"></i></button> 
+                           <a class="btn btn-warning btn-sm" href="{{url('consulta_medica/'.$consulta->pk_consulta.'/edit')}}"><i class="fas fa-pencil-alt"></i></a> 
+                          {{-- <button class="btn btn-warning btn-sm"><i class="fas fa-pencil-alt"></i></button>  --}}
                             <button type="submit" class="btn btn-danger btn-sm">
                                 <i class="fas fa-trash-alt"></i>
                             </button>
@@ -70,6 +71,9 @@
           
 @endsection
 
+
+
+
 @section('ccs')
 <link rel="stylesheet" href="css/sweetalert2.min.css">
 @stop
@@ -79,11 +83,25 @@
 
 @if(session('eliminar')=='ok')
 <script>
-    Swal.fire(
-      '¡Eliminado!',
-      'Registro eliminado con éxito',
-      'success'
-    )
+Swal.fire({
+  position: 'center',
+  icon: 'success',
+  title: 'Eliminado con éxito',
+  showConfirmButton: false,
+  timer: 1500
+})
+</script>
+@endif
+
+@if(session('actualizar')=='ok')
+<script>
+Swal.fire({
+  position: 'center',
+  icon: 'success',
+  title: 'Actualizado con éxito',
+  showConfirmButton: false,
+  timer: 1500
+})
 </script>
 @endif
 
@@ -93,7 +111,7 @@ $('.eliminarRegistro').submit(function(e){
 e.preventDefault();
 Swal.fire({
   title: '¿Estás seguro?',
-  text: "Este diagnostico sera eliminado permanentemente",
+  text: "Este Tipo de Examen será eliminado permanentemente",
   icon: 'warning',
   showCancelButton: true,
   confirmButtonColor: '#3085d6',
