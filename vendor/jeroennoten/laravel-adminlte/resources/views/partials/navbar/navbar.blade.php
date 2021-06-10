@@ -18,7 +18,7 @@
 
     {{-- Navbar right links --}}
     <div style="margin-left: 35%; color:black; font-size: 20px;">
-        {{ Carbon\Carbon::now()->format('d-M-Y')}}
+        {{ Carbon\Carbon::now()->format('d M Y')}}
     </div>
     <ul class="navbar-nav ml-auto">
         {{-- Custom right links --}}
