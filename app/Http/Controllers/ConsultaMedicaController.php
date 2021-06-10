@@ -75,6 +75,8 @@ class ConsultaMedicaController extends Controller
     public function edit($id)
     {
         //
+        $objeto=ConsultaMedica::find($id);
+        return view('sistema.consulta_medica.edit')->with('objeto',$objeto);
     }
 
     /**
