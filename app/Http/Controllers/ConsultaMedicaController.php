@@ -84,10 +84,28 @@ class ConsultaMedicaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+   
     public function update(Request $request, $id)
     {
-        //
+        $consulta= ConsultaMedica::find($id);
+        
+   
+        $consulta->fecha=$request->get('fecha');
+        $consulta->area_consulta=$request->get('area');
+        $consulta->indicaciones=$request->get('indicaciones');
+        $consulta->pre_diagnostico=$request->get('pre_diagnostico');
+        $consulta->sintomatologia=$request->get('Sintomatologia');
+        $consulta->exam_fisico=$request->get('examen');
+        $consulta->consulta_por=$request->get('consultado_por');
+
+
+
+        
+        $consulta->save();
+        
+        return redirect('/consulta_medica')->with('actualizar','ok');
     }
+    
 
     /**
      * Remove the specified resource from storage.
