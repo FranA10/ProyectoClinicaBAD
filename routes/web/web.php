@@ -45,6 +45,14 @@ Route::delete('eliminarProfesion/{id}','ProfesionController@eliminarProfesion')-
 Route::get('editarFormProfesion/{id}','ProfesionController@actualizarProfesion')->name('editFormPF');
 Route::patch('editarProfesion/{id}','ProfesionController@editarProfesion')->name('editPF');
 
+//Catalogo Dignosticos
+Route::get('guardarFormCatDig', 'CatDiagnosticoController@verFormCatDig')->name('formCD');
+Route::post('saveCatDig', 'CatDiagnosticoController@guardarCatDig')->name('saveCD');
+Route::get('listarCatDig', 'CatDiagnosticoController@mostrarCatDig')->name('listCD');
+Route::delete('eliminarCatDig/{id}','CatDiagnosticoController@eliminarCatDig')->name('deleteCD');
+Route::get('editarFormCatDig/{id}','CatDiagnosticoController@actualizarCatDig')->name('editFormCD');
+Route::patch('editarCatDig/{id}','CatDiagnosticoController@editarCatDig')->name('editCD');
+
 //Administracion de usuarios y roles
 //ejemplo de ruta protegida
 //Route::resource('/usuarios', UsuarioController::class)->middleware('can:admin.usuarios')->names('admin.usuarios');
