@@ -47,7 +47,7 @@
                       <td>{{$consulta->exam_fisico}}</td>
                       <td>{{$consulta->area_consulta}}<span class="tag tag-success"> </span></td>
                       <td>
-                        <form action="{{ route('historial_diagnostico.destroy', $consulta->pk_consulta)}}" method="POST" class="eliminarRegistro">
+                        <form action="{{ route('consulta_medica.destroy', $consulta->pk_consulta)}}" method="POST" class="eliminarRegistro">
                           
                            @method('DELETE')
                            @csrf 
@@ -111,7 +111,7 @@ $('.eliminarRegistro').submit(function(e){
 e.preventDefault();
 Swal.fire({
   title: '¿Estás seguro?',
-  text: "Este Tipo de Examen será eliminado permanentemente",
+  text: "Esta consulta será eliminada permanentemente",
   icon: 'warning',
   showCancelButton: true,
   confirmButtonColor: '#3085d6',

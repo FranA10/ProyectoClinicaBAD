@@ -117,7 +117,7 @@ class ConsultaMedicaController extends Controller
      */
     public function destroy($id)
     {
-        CatDiagnostico::destroy($id);
-        return redirect('/cat_diagnostico')->with('eliminar','ok');
+        ConsultaMedica::destroy($id);
+        return redirect('/consulta_medica')->with('eliminar','ok');
     }
 }
