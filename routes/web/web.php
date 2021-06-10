@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use admin\UsuarioController;
+use admin\RoleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,4 +46,7 @@ Route::get('editarFormProfesion/{id}','ProfesionController@actualizarProfesion')
 Route::patch('editarProfesion/{id}','ProfesionController@editarProfesion')->name('editPF');
 
 //Administracion de usuarios y roles
-Route::resource('/usuarios', UsuarioController::class)->names('admin.usuarios');
+//ejemplo de ruta protegida
+//Route::resource('/usuarios', UsuarioController::class)->middleware('can:admin.usuarios')->names('admin.usuarios');
+Route::resource('usuarios', UsuarioController::class)->names('admin.usuarios');
+Route::resource('roles', RoleController::class)->names('admin.roles');

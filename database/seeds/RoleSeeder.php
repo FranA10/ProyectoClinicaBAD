@@ -3,6 +3,7 @@
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
+
 class RoleSeeder extends Seeder
 {
     /**
@@ -22,10 +23,14 @@ class RoleSeeder extends Seeder
         $role7 = Role::create(['name' => 'Cardiologo']);
 
 
-        $permission1 = Permission::create(['name' => 'admin.usuarios.index']);
-        $permission2 = Permission::create(['name' => 'admin.usuarios.edit']);
-        $permission3 = Permission::create(['name' => 'admin.usuarios.update']);
-        $permission4 = Permission::create(['name' => 'admin.usuarios']);
-        $role1->syncPermissions([$permission1,$permission2,$permission3, $permission4]);
+        $permission1 = Permission::create(['name' => 'admin.usuarios.index',
+                                            'description'=>'Ver listado de usuarios']);
+        $permission2 = Permission::create(['name' => 'admin.usuarios.edit',
+                                            'description'=>'Asignar roles a usuario']);
+        // $permission3 = Permission::create(['name' => 'admin.usuarios.update',
+        //                                     'description'=>'']);
+        // $permission4 = Permission::create(['name' => 'admin.usuarios',
+        //                                     'description'=>'']);
+        $role1->syncPermissions([$permission1,$permission2]);
     }
 }
