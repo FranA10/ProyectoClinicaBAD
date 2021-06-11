@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\admin\UsuarioController;
 use Illuminate\Support\Facades\Route;
 //use admin\UsuarioController;
 use admin\RoleController;
