@@ -136,10 +136,18 @@
                                      
                                       
                                       @foreach($objeto_signo as $signoVital)
+                                      
                                       <tr>
-                                        <td>{{$signoVital->nombre_signo}}</td>
-                                        <td>{{$signoVital->valor_signo}}</td>
-                                        <td></td>
+                                        <td>
+                                          <input disabled type="text" value={{$signoVital->nombre_signo}}  id="hora" name="hora" class="form-control" placeholder="observaciones">
+
+                                          </td>
+                                        <td>
+                                          <input disabled  type="text" value={{$signoVital->valor_signo}}  id="hora" name="hora" class="form-control" placeholder="observaciones">
+                                          </td>
+                                        <td>
+                                           <a class="btn btn-warning btn-sm"><i class="fas fa-pencil-alt"></i></a> 
+                                        </td>
 
                                       </tr>
                                       @endforeach
@@ -184,19 +192,32 @@
                                 <div class="card-body table-responsive p-0">
                                     <table class="table table-hover">
                                       <tr>
-                                        <th></th>
+                                      
                                         <th>Tipo</th>
                                         <th>Fecha</th>
                                         <th>Hora</th>
                                         <th>Observaciones</th>
+                                        {{-- <th></th> --}}
                                       </tr>
                                      
                                       @foreach($objeto_diagnostico as $diagnostico)
                                       <tr>
-                                        <td></td>
-                                        <td>{{$diagnostico->fechha}}</td>
-                                        <td>{{$diagnostico->hora}}</td>
-                                        <td>{{$diagnostico->observaciones}}</td>
+                                        <td>
+                                          <input type="text"  id="hora" name="hora" class="form-control" placeholder="observaciones">
+                                        </td>
+                                        
+                                        <td>
+                                          <input   type="date" enabled id="fecha" value= {{$diagnostico->fecha}} name="fecha" class="form-control" placeholder="observaciones">
+                                        </td>
+                                        <td>
+                                          <input type="time"  id="hora" name="hora" class="form-control" placeholder="observaciones">
+                                          </td>
+                                        <td>
+                                          <input type="text"  id="observaciones" value= {{$diagnostico->observaciones}} name="observaciones" class="form-control" placeholder="observaciones">
+                                          </td>
+                                        {{-- <td>
+
+                                        </td> --}}
 
 
                                       </tr>
