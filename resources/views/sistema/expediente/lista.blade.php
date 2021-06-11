@@ -1,7 +1,7 @@
 @extends('adminlte::page')
 
 @section('content_header')
-    <h3>Examenes Médicos del Paciente Juan Pérez</h3>
+    <h3>Expedientes Médicos </h3>
 @endsection
 
 @section('content')
@@ -11,7 +11,7 @@
             <div class="col-md-12">
               <div class="card">
                 <div class="card-header">
-                 <a class="btn btn-primary btn-sm" href="{{ route('crear_examen')  }}"><i class="fas fa-plus"></i> Crear</a>
+                 <a class="btn btn-primary btn-sm" href="{{url('expediente-crear')}}" ><i class="fas fa-plus"></i> Crear</a>
   
                   <div class="card-tools">
                     <div class="input-group input-group-sm" style="width: 150px;">
@@ -28,43 +28,30 @@
                   <table class="table table-hover">
                     <tr>
                       <th>Nombre</th>
-                      <th>Descripción</th>
-                      <th>Precio</th>
-
-                      <th>Fecha Resultados</th>
+                      <th>Dui</th>
+                      <th>Ultima Modificación</th>
                       <th>#</th>
-
                     </tr>
                     @foreach($objetos as $objeto)
                     <tr>
+
+                      <td>{{$objeto->nombrePaciente}}</td>
+                      <td>{{$objeto->dui}}</td>
+                      <td>{{$objeto->fechaModificacion}}</td>
                       <td>
-                          {{-- <form action="{{ route('tipo-examen.destroy', $tipoex->pk_tipo_examen) }}" method="POST" class="eliminarRegistro">
-                           @method('DELETE')
-                           @csrf  --}}
-                          <a class="btn btn-warning btn-sm" ><i class="fas fa-eye"></i>Ver</a> 
-                            {{-- <button type="submit" class="btn btn-danger btn-sm">
-                                <i class="fas fa-trash-alt"></i>
-                            </button>
-                        </form> --}}
-                        </td>
-                      <td>{{$objeto->nombre_examen}}</td>
-                      <td>{{$objeto->observacion}} </td>
-                      <td><span class="tag tag-success">$ {{number_format($objeto->precio,2)}} </span></td>
-                      <td>{{$objeto->fecha_resultado}} </td>
-                      <td>
-                        {{-- <form action="{{ route('tipo-examen.destroy', $tipoex->pk_tipo_examen) }}" method="POST" class="eliminarRegistro">
+                        <form  method="POST" class="eliminarRegistro">
                          @method('DELETE')
-                         @csrf  --}}
-                        <a class="btn btn-warning btn-sm" ><i class="fas fa-eye"></i>Ver</a> 
+                         @csrf 
+                        <a class="btn btn-warning btn-sm" href="{{url('expediente/'.$objeto->oid)}}"><i class="fas fa-eye"></i> Ver</a> 
                           {{-- <button type="submit" class="btn btn-danger btn-sm">
                               <i class="fas fa-trash-alt"></i>
-                          </button>
-                      </form> --}}
+                          </button> --}}
+                      </form>
                       </td>
                     </tr>
                     @endforeach
                   </table>
-                  {{ $objetos->links() }}
+                  {{-- {{ $objetos->links() }} --}}
                 </div>
                 <!-- /.card-body -->
               </div>
@@ -75,23 +62,59 @@
           
 @endsection
 
-  
-  @section('ccs')
+@section('ccs')
 <link rel="stylesheet" href="css/sweetalert2.min.css">
 @stop
 
 @section('js')
 <script src="{{ asset('static/js/sweetalert2.all.min.js') }}"></script>
-  @if(session('crear')=='ok')
+
+@if(session('eliminar')=='ok')
 <script>
 Swal.fire({
   position: 'center',
   icon: 'success',
-  title: 'Creado con éxito',
+  title: 'Eliminado con éxito',
   showConfirmButton: false,
   timer: 1500
 })
 </script>
 @endif
 
-@stop
+@if(session('actualizar')=='ok')
+<script>
+Swal.fire({
+  position: 'center',
+  icon: 'success',
+  title: 'Actualizado con éxito',
+  showConfirmButton: false,
+  timer: 1500
+})
+</script>
+@endif
+
+<script type="text/javascript">
+
+$('.eliminarRegistro').submit(function(e){
+e.preventDefault();
+Swal.fire({
+  title: '¿Estás seguro?',
+  text: "Este Tipo de Examen será eliminado permanentemente",
+  icon: 'warning',
+  showCancelButton: true,
+  confirmButtonColor: '#3085d6',
+  cancelButtonColor: '#d33',
+  confirmButtonText: '¡Sí, Eliminar!'
+}).then((result) => {
+  if (result.value) {
+
+    this.submit();
+
+
+  }
+})
+});
+
+
+</script>
+@stop   

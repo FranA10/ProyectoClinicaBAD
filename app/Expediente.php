@@ -9,4 +9,5 @@ class Expediente extends Model
     protected $table = 'expediente';
     protected $primaryKey = 'pk_id_expediente';
     protected $keyType = 'string';
+    public $timestamps = false;
 }

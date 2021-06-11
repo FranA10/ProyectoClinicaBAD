@@ -23,23 +23,23 @@
                 <div class="card-body table-responsive p-0">
                   <table class="table table-hover">
                     <tr>
-                      <th>#</th>
                       <th>Nombre</th>
+                      <th>#</th>
+
                     </tr>
                     @foreach($objetos as $objeto)
                     <tr>
-                      <td>
-                          <form action="{{ route('tipo-anexo.destroy', $objeto->id_tipo_anexo) }}" method="POST" class="eliminarRegistro">
-                           @method('DELETE')
-                           @csrf 
-                          <a class="btn btn-warning btn-sm" href="{{url('tipo-anexo/'.$objeto->id_tipo_anexo.'/edit')}}"><i class="fas fa-pencil-alt"></i></a> 
-                            <button type="submit" class="btn btn-danger btn-sm">
-                                <i class="fas fa-trash-alt"></i>
-                            </button>
-                        </form>
-                        </td>
                       <td>{{$objeto->tipo_anexo}}</td>
-
+                      <td>
+                        <form action="{{ route('tipo-anexo.destroy', $objeto->id_tipo_anexo) }}" method="POST" class="eliminarRegistro">
+                         @method('DELETE')
+                         @csrf 
+                        <a class="btn btn-warning btn-sm" href="{{url('tipo-anexo/'.$objeto->id_tipo_anexo.'/edit')}}"><i class="fas fa-pencil-alt"></i></a> 
+                          <button type="submit" class="btn btn-danger btn-sm">
+                              <i class="fas fa-trash-alt"></i>
+                          </button>
+                      </form>
+                      </td>
                     </tr>
                     @endforeach
                   </table>
