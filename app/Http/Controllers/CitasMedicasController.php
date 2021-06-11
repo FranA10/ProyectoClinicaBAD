@@ -134,10 +134,12 @@ class CitasMedicasController extends Controller
      
      * @return \Illuminate\Http\Response
      */
-    public function vistaBD()
+    public function vistaBD(Request $request)
     {
+        print_r($request->pk);
+        print_r('llegooooo');
         DB::select('EXEC CREARCONSULTAS');
-        
+     
         $citas_medica = CitaMedica::paginate(10);
         return view('sistema.citas_medicas.lista')->with('citas_medica',$citas_medica);
         

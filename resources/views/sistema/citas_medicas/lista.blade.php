@@ -18,7 +18,7 @@
 
                  </div>
                  <div class="col-md-5">
-                  <a class="btn btn-info" >Generar consultas medicas</a>
+                  <a id="btnGenerarConsultas" class="btn btn-info" >Generar consultas medicas</a>
 
                  </div>
                   <div>
@@ -88,6 +88,20 @@
 
 @section('js')
 <script src="{{ asset('static/js/sweetalert2.all.min.js') }}"></script>
+<script type="text/javascript">
+  $('#btnGenerarConsultas').on('click', function(){
+
+  $.ajax({
+    type:'GET',
+    url:"{{url('ejecutarview')}} ",
+    data: {pk:'pk'},
+    success:function(data){
+
+    }
+  })
+})
+
+</script>
 
 @if(session('eliminar')=='ok')
 <script>
