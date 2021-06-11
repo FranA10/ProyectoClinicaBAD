@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use App\CitaMedica;
 use App\SignoVital;
 use App\HistorialDiagnostico;
+use DB;
+
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+
 
 class CitasMedicasController extends Controller
 {
@@ -137,11 +139,23 @@ class CitasMedicasController extends Controller
      */
     public function vistaBD()
     {
-       // $resultado= DB::select('select * from expediente');
-         $resultado= DB::select('EXEC CREARCONSULTAS');
+        $db = DB::connection();
+        $stmt = $db-> getPdo()->prepare("exec crearConsultas()");
+        $stmt->execute();
+        // try
+        // {
+        //     (DB::select('call crearConsultas()'));
+
+        // } 
+        // catch(Throwable $e)
+        // {
+        //     report($e);
+
+        //     return false;
+        // }
+        
+    
         $citas_medica = CitaMedica::paginate(10);
         return response()->json(['ejecutado' => 'Script ejecutado con éxito', 'citas_medicas'=>$citas_medica]);
-
-        
     }
 }
