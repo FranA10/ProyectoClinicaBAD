@@ -23,27 +23,29 @@
                 <div class="card-body table-responsive p-0">
                   <table class="table table-hover">
                     <tr>
-                      <th></th>
+                     
                       <th>Nombre</th>
                       <th>Valor</th>
                       <th>Consulta</th>
+                      <th></th>
                      
                     </tr>
                     @foreach($signosvital as $signo)
                     <tr>
-                      <td>
-                          <form action="" method="POST" class="eliminarRegistro">
-                           @method('DELETE')
-                           @csrf 
-                          <button class="btn btn-warning btn-sm"><i class="fas fa-pencil-alt"></i></button> 
-                            <button type="submit" class="btn btn-danger btn-sm">
-                                <i class="fas fa-trash-alt"></i>
-                            </button>
-                        </form>
-                        </td>
+                     
                       <td>{{$signo->nombre_signo}}</td>
                       <td>{{$signo->valor_signo}}</td>
                       <td></td>
+                      <td>
+                        <form action="" method="POST" class="eliminarRegistro">
+                         @method('DELETE')
+                         @csrf 
+                        <button class="btn btn-warning btn-sm"><i class="fas fa-pencil-alt"></i></button> 
+                          <button type="submit" class="btn btn-danger btn-sm">
+                              <i class="fas fa-trash-alt"></i>
+                          </button>
+                      </form>
+                      </td>
 
                     
                     </tr>

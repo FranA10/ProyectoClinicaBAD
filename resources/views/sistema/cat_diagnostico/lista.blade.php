@@ -23,26 +23,28 @@
                 <div class="card-body table-responsive p-0">
                   <table class="table table-hover">
                     <tr>
-                      <th></th>
+                      
                       <th>Nombre</th>
                       <th>Descripcion</th>
+                      <th></th>
                      
                     </tr>
                     @foreach($catdiagnostico as $categoria)
                     <tr>
-                      <td>
-                          <form action="{{ route('cat_diagnostico.destroy', $categoria->pk_cod_inter)}}" method="POST" class="eliminarRegistro">
-                           @method('DELETE')
-                           @csrf 
-                          <button class="btn btn-warning btn-sm"><i class="fas fa-pencil-alt"></i></button> 
-                            <button type="submit" class="btn btn-danger btn-sm">
-                                <i class="fas fa-trash-alt"></i>
-                            </button>
-                        </form>
-                        </td>
+                     
                       
                       <td>{{$categoria->nombre_diagnostico}}</td>
                       <td>{{$categoria->descripcion}}<span class="tag tag-success"> </span></td>
+                      <td>
+                        <form action="{{ route('cat_diagnostico.destroy', $categoria->pk_cod_inter)}}" method="POST" class="eliminarRegistro">
+                         @method('DELETE')
+                         @csrf 
+                        <button class="btn btn-warning btn-sm"><i class="fas fa-pencil-alt"></i></button> 
+                          <button type="submit" class="btn btn-danger btn-sm">
+                              <i class="fas fa-trash-alt"></i>
+                          </button>
+                      </form>
+                      </td>
                     </tr>
                     @endforeach
                   </table>

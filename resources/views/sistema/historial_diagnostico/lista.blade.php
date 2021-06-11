@@ -23,13 +23,18 @@
                 <div class="card-body table-responsive p-0">
                   <table class="table table-hover">
                     <tr>
-                      <th>#</th>
                       <th>Fecha</th>
                       <th>Hora</th>
                       <th>Observaciones</th>
+                      <th>#</th>
+
                     </tr>
                     @foreach($hist_diagnostico as $historial)
                     <tr>
+                      
+                      <td>{{$historial->fecha}}</td>
+                      <td>{{$historial->hora}}</td>
+                      <td>{{$historial->observaciones}}<span class="tag tag-success"> </span></td>
                       <td>
                         <form action="{{ route('historial_diagnostico.destroy', $historial->pk_diagnostico)}}" method="POST" class="eliminarRegistro">
                           
@@ -41,9 +46,6 @@
                             </button>
                         </form>
                         </td>
-                      <td>{{$historial->fecha}}</td>
-                      <td>{{$historial->hora}}</td>
-                      <td>{{$historial->observaciones}}<span class="tag tag-success"> </span></td>
                     </tr>
                     @endforeach
                   </table>
