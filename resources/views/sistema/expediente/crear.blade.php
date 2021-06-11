@@ -70,17 +70,17 @@
                         <input type="text" disabled  id="telResponsable" name="nombre" class="form-control" >
                      </div>
                   </div>
-                  <div class="col-12">
+                  {{-- <div class="col-12">
                      <div class="form-group">
                         <label>Descripción</label>
                         <textarea class="form-control" rows="3" placeholder="Enter ..." id="descripcion"></textarea>
                      </div>
-                  </div>
+                  </div> --}}
                </div>
                
                <hr/>
                <div class="row" >
-                   <div class="col-6"><button class="btn btn-dark">Cancelar</button> </div>
+                   <div class="col-6"><a class="btn btn-dark"  href="{{ url('expedientes')  }}" >Cancelar</a> </div>
                    <div class="col-6"><button type="submit" class="btn btn-primary">Crear</button> </div>
 
                </div>
