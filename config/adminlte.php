@@ -326,6 +326,11 @@ return [
             'icon' => 'fas fa-stethoscope',
             'url'        => '/signo-vital',
         ],
+        [
+            'text'       => 'Citas medicas',
+            'icon' => '	fas fa-band-aid',
+            'url'        => '/citas_medicas',
+        ],
         
     ],
 

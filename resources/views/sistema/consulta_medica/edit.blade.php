@@ -99,9 +99,7 @@
                             <li class="nav-item">
                               <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Historial diagnosticos</a>
                             </li>
-                            <li class="nav-item">
-                              <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">otros</a>
-                            </li>
+                           
                         </ul>
                           <div class="tab-content" id="myTabContent">
                             <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
@@ -111,13 +109,13 @@
                                     <button class="btn btn-info  btn-block" tabindex="4">Agregar</button>
                                 </div>
                                     
-                                <div class="col-5">
+                                <div class="col-3">
                                     <div class="form-group">
                                         <label></label>
                                         <input type="text"  id="nombre" name="nombre" class="form-control" placeholder="Nombre">
                                     </div>
                                 </div>
-                                <div class="col-4">
+                                <div class="col-6">
                                     <div class="form-group">
                                         <label></label>
                                         <input type="text"  id="valor" name="valor" class="form-control" placeholder="Valor">
@@ -138,15 +136,15 @@
                                       @foreach($objeto_signo as $signoVital)
                                       
                                       <tr>
-                                        <td>
+                                        <td class="col-md-6">
                                           <input disabled type="text" value={{$signoVital->nombre_signo}}  id="hora" name="hora" class="form-control" placeholder="observaciones">
 
                                           </td>
-                                        <td>
+                                        <td class="col-md-5">
                                           <input disabled  type="text" value={{$signoVital->valor_signo}}  id="hora" name="hora" class="form-control" placeholder="observaciones">
                                           </td>
-                                        <td>
-                                           <a class="btn btn-warning btn-sm"><i class="fas fa-pencil-alt"></i></a> 
+                                        <td class="col-md-1">
+                                           <a class="btn btn-warning"><i class="fas fa-pencil-alt"></i></a> 
                                         </td>
 
                                       </tr>
@@ -163,24 +161,24 @@
                                     <button class="btn btn-info  btn-block" tabindex="4">Agregar</button>
                                 </div>
                                     
-                                <div class="col-2">
+                                <div class="col-3">
                                     <div class="form-group">
                                         <label></label>
                                         <input type="text"  id="tipo" name="tipo" class="form-control" placeholder="tipo">
                                     </div>
                                 </div>
-                                <div class="col-2">
+                                <div class="col-3">
                                     <div class="form-group">
                                         <label></label>
-                                        <input type="text"  id="fecha" name="fecha" class="form-control" placeholder="fecha">
+                                        <input type="date"  id="fecha" name="fecha" class="form-control" placeholder="fecha">
                                     </div>
                                 </div>
-                                <div class="col-2">
+                                {{-- <div class="col-1">
                                   <div class="form-group">
                                       <label></label>
-                                      <input type="text"  id="hora" name="hora" class="form-control" placeholder="hora">
+                                      <input type="time"  id="hora" name="hora" class="form-control" placeholder="hora">
                                   </div>
-                              </div>
+                              </div> --}}
                               <div class="col-3">
                                   <div class="form-group">
                                       <label></label>
@@ -202,17 +200,17 @@
                                      
                                       @foreach($objeto_diagnostico as $diagnostico)
                                       <tr>
-                                        <td>
+                                        <td class="col-md-3">
                                           <input type="text"  id="hora" name="hora" class="form-control" placeholder="observaciones">
                                         </td>
                                         
-                                        <td>
+                                        <td class="col-md-3">
                                           <input   type="date" enabled id="fecha" value= {{$diagnostico->fecha}} name="fecha" class="form-control" placeholder="observaciones">
                                         </td>
-                                        <td>
+                                        <td class="col-md-3">
                                           <input type="time"  id="hora" name="hora" class="form-control" placeholder="observaciones">
                                           </td>
-                                        <td>
+                                        <td class="col-md-3">
                                           <input type="text"  id="observaciones" value= {{$diagnostico->observaciones}} name="observaciones" class="form-control" placeholder="observaciones">
                                           </td>
                                         {{-- <td>
@@ -227,9 +225,7 @@
                                   </div>
                               </div>
                             </div>
-                            <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-                              
-                            </div>
+                           
                           </div>
                         
                     </div>
