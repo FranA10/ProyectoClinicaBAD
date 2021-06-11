@@ -15,7 +15,8 @@ class UsuarioController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function __construct()
-    {
+    {   
+        //$this->middleware('can:<<nombre del permiso>>')->only('<<nombre/s del metodo del controlador>>');
         $this->middleware('can:admin.usuarios.index')->only('index');
         $this->middleware('can:admin.usuarios.edit')->only('edit', 'update');
 
