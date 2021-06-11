@@ -19,7 +19,7 @@
                     </div>
                     <div class="col-sm-10">
                         <div class="alert alert-warning" role="alert">
-                            <a class="alert-link">Precaucion!! Estos procesos son de configuracion inicial, se recomienda leer el manual de instalacion antes de ejecutar alguno de ellos.</a>
+                            <a class="alert-link">Precaución!! Estos procesos son de configuración inicial, se recomienda leer el manual de instalación antes de ejecutar alguno de ellos.</a>
                         </div>
                     </div>
                 </div>
@@ -39,6 +39,17 @@
                 <form action="{{ route('crearGN')}}" method="POST">
                 @csrf
                     <div class="card-header text-center">Generar Sexos</div>
+                    <div class="card-body">
+                        <div class="row form-group">
+                            <button type="submit" class="btn btn-success col-md-9 offset-2">EJECUTAR</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="card">
+                <form action="{{ route('crearPSCI')}}" method="POST">
+                @csrf
+                    <div class="card-header text-center">Generar Paises y Ciudades</div>
                     <div class="card-body">
                         <div class="row form-group">
                             <button type="submit" class="btn btn-success col-md-9 offset-2">EJECUTAR</button>
