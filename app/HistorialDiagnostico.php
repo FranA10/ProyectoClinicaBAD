@@ -6,6 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class HistorialDiagnostico extends Model
 {
-    protected $table = 'his_diaaignostico';
+    protected $table = 'hist_diagnostico';
     protected $primaryKey = 'pk_diagnostico';
+    public $timestamps = false;
+    protected $dateFormat = 'DD-MON-RR';
+
+    
+
 }
