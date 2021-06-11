@@ -307,36 +307,10 @@ return [
                     'url'  => '#',
                 ],
             ],
-        ],
+        ]
 
         
        
-        ['header' => 'Consulta medica'],
-        [
-            'text'       => 'Historico de diagnosticos',
-            'icon' => 'fas fa-hospital-user',
-            'url'        => '/historial_diagnostico',
-        ],
-        [
-            'text'       => 'Categorias de diagnostico',
-            'icon'       =>   'fas fa-procedures',
-            'url'        => '/cat_diagnostico',
-        ],
-        [
-            'text'       => 'Consulta',
-            'icon' => 'fas fa-clinic-medical',
-            'url'        => '/consulta_medica',
-        ],
-        [
-            'text'       => 'Signos vitales',
-            'icon' => 'fas fa-stethoscope',
-            'url'        => '/signo-vital',
-        ],
-        [
-            'text'       => 'Citas medicas',
-            'icon' => '	fas fa-band-aid',
-            'url'        => '/citas_medicas',
-        ],
         
     ],
 
