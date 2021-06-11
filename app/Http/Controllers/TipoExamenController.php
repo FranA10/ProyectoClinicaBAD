@@ -14,8 +14,8 @@ class TipoExamenController extends Controller
      */
     public function index()
     {
-        $tiposexam=TipoExamen::paginate(5);
-        return view('sistema.tipo_examen.lista')->with('tiposexam',$tiposexam) ;
+        $tiposexam=TipoExamen::paginate(7);
+        return view('sistema.tipo_examen.lista')->with(['tiposexam' => $tiposexam] ) ;
     }
 
     /**
@@ -42,7 +42,7 @@ class TipoExamenController extends Controller
         $tipoExam->descripcion_tipo_exam= $request->get('descripcion');
         $tipoExam->precio=$request->get('precio');
         $tipoExam->save();
-        return redirect('/tipo-examen');
+        return back()->with(['crear' => 'ok']);
     }
 
     /**
@@ -65,6 +65,8 @@ class TipoExamenController extends Controller
     public function edit($id)
     {
         //
+        $objeto=TipoExamen::find($id);
+        return view('sistema.tipo_examen.edit')->with('objeto',$objeto);
     }
 
     /**
@@ -76,7 +78,12 @@ class TipoExamenController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $tipoExam= TipoExamen::find($id);
+        $tipoExam->nombre_tipo_exam= $request->get('nombre');
+        $tipoExam->descripcion_tipo_exam= $request->get('descripcion');
+        $tipoExam->precio=$request->get('precio');
+        $tipoExam->save();
+        return redirect('/tipo-examen')->with('actualizar','ok');
     }
 
     /**

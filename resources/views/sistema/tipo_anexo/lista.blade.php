@@ -1,7 +1,7 @@
 @extends('adminlte::page')
 
 @section('content_header')
-    <h3>Tipos de Examen </h3>
+    <h3>Tipos de Anexos </h3>
 @endsection
 
 @section('content')
@@ -11,15 +11,11 @@
             <div class="col-md-12">
               <div class="card">
                 <div class="card-header">
-                 <a class="btn btn-primary btn-sm" href="{{ url('/tipo-examen/create')  }}"><i class="fas fa-plus"></i> Crear</a>
+                 <a class="btn btn-primary btn-sm" href="{{ url('/tipo-anexo/create')  }}"><i class="fas fa-plus"></i> Crear</a>
   
                   <div class="card-tools">
                     <div class="input-group input-group-sm" style="width: 150px;">
-                      {{-- <input type="text" name="table_search" class="form-control float-right" placeholder="Search"> --}}
-  
-                      {{-- <div class="input-group-append">
-                        <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
-                      </div> --}}
+
                     </div>
                   </div>
                 </div>
@@ -28,20 +24,17 @@
                   <table class="table table-hover">
                     <tr>
                       <th>Nombre</th>
-                      <th>Descripción</th>
-                      <th>Precio</th>
                       <th>#</th>
+
                     </tr>
-                    @foreach($tiposexam as $tipoex)
+                    @foreach($objetos as $objeto)
                     <tr>
-                      <td>{{$tipoex->nombre_tipo_exam}}</td>
-                      <td>{{$tipoex->descripcion_tipo_exam}} </td>
-                      <td><span class="tag tag-success">$ {{number_format($tipoex->precio,2)}} </span></td>
+                      <td>{{$objeto->tipo_anexo}}</td>
                       <td>
-                        <form action="{{ route('tipo-examen.destroy', $tipoex->pk_tipo_examen) }}" method="POST" class="eliminarRegistro">
+                        <form action="{{ route('tipo-anexo.destroy', $objeto->id_tipo_anexo) }}" method="POST" class="eliminarRegistro">
                          @method('DELETE')
                          @csrf 
-                        <a class="btn btn-warning btn-sm" href="{{url('tipo-examen/'.$tipoex->pk_tipo_examen.'/edit')}}"><i class="fas fa-pencil-alt"></i></a> 
+                        <a class="btn btn-warning btn-sm" href="{{url('tipo-anexo/'.$objeto->id_tipo_anexo.'/edit')}}"><i class="fas fa-pencil-alt"></i></a> 
                           <button type="submit" class="btn btn-danger btn-sm">
                               <i class="fas fa-trash-alt"></i>
                           </button>
@@ -50,7 +43,7 @@
                     </tr>
                     @endforeach
                   </table>
-                  {{ $tiposexam->links() }}
+                  {{ $objetos->links() }}
                 </div>
                 <!-- /.card-body -->
               </div>
@@ -92,13 +85,15 @@ Swal.fire({
 </script>
 @endif
 
+
+
 <script type="text/javascript">
 
 $('.eliminarRegistro').submit(function(e){
 e.preventDefault();
 Swal.fire({
   title: '¿Estás seguro?',
-  text: "Este Tipo de Examen será eliminado permanentemente",
+  text: "Este Tipo de Anexo será eliminado permanentemente",
   icon: 'warning',
   showCancelButton: true,
   confirmButtonColor: '#3085d6',
