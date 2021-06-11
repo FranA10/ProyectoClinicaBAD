@@ -346,7 +346,7 @@ return [
                 ],
             ],
         ],
-<<<<<<< HEAD
+
 
         
        
@@ -361,9 +361,7 @@ return [
             'icon'       =>   'fas fa-procedures',
             'url'        => '/cat_diagnostico',
         ],
-=======
-        ['header' => 'PACIENTES'],
->>>>>>> 4085df0d3e382456c694408ffa4b3948833ee00b
+
         [
             'text'       => 'Consulta',
             'icon' => 'fas fa-clinic-medical',
