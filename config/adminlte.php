@@ -237,38 +237,76 @@ return [
         ],
 
         // Sidebar items:
+
         [
             'type' => 'sidebar-menu-search',
             'text' => 'search',
-        ],
+        ],  
         [
             'text' => 'blog',
             'url'  => 'admin/blog',
             'can'  => 'manage-blog',
         ],
-        [
-            'text'        => 'pages',
-            'url'         => 'admin/pages',
-            'icon'        => 'far fa-fw fa-file',
-            'label'       => 4,
-            'label_color' => 'success',
+        // [
+        //     'text'        => 'pages',
+        //     'url'         => 'admin/pages',
+        //     'icon'        => 'far fa-fw fa-file',
+        //     'label'       => 4,
+        //     'label_color' => 'success',
+        // ],
+        ['header' => 'CONFIGURACIÓN DE SISTEMA',
+         //'can'  => '',   
         ],
         [
             'text'        => 'Usuarios',
             'route'       => 'admin.usuarios.index',
             'icon'        => 'fas fa-users fa-fw',
-            //'can'         => 'admin.usuarios.index',
+            'can'         => 'admin.usuarios.index',
         ],
-        ['header' => 'account_settings'],
+
         [
-            'text' => 'profile',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-user',
+            'text'        => 'Roles',
+            'route'       => 'admin.roles.index',
+            'icon'        => 'fas fa-users-cog fa-fw',
+            'can'         => 'admin.usuarios.index',
         ],
         [
-            'text' => 'change_password',
+            'text'        => 'Centros Hospitalarios',
+            'route'       => 'listCentro',
+            'icon'        => 'fas fa-hospital fa-fw',
+            //'can'         => '',
+        ],
+        [
+            'text'        => 'Ajustes iniciales',
+            'route'       => 'configuracionRoot',
+            'icon'        => ' 	fa fa-cogs fa-fw',
+            //'can'         => '',
+        ],
+        [
+            'text'        => 'Tipos de Sangre',
+            'route'       => 'listarTS',
+            'icon'        => 'fa fa-heart fa-fw',
+            //'can'         => '',
+        ],
+
+        ['header' => 'ADMINISTRATIVA'],
+        [
+            'text' => 'Datos personales',
             'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
+            'icon' => 'fa fa-address-card',
+        ],
+        [
+            'text'        => 'Profesiones',
+            'route'       => 'listPF',
+            'icon'        => 'fa fa-graduation-cap fa-fw',
+            //'can'         => '',
+        ],
+        ['header' => 'MEDICINA'],
+        [
+            'text'        => 'Códigos de diágnostico',
+            'route'       => 'listPF',
+            'icon'        => 'fas fa-stethoscope fa-fw',
+            //'can'         => '',
         ],
         [
             'text'    => 'multilevel',
@@ -308,6 +346,7 @@ return [
                 ],
             ],
         ],
+<<<<<<< HEAD
 
         
        
@@ -322,6 +361,9 @@ return [
             'icon'       =>   'fas fa-procedures',
             'url'        => '/cat_diagnostico',
         ],
+=======
+        ['header' => 'PACIENTES'],
+>>>>>>> 4085df0d3e382456c694408ffa4b3948833ee00b
         [
             'text'       => 'Consulta',
             'icon' => 'fas fa-clinic-medical',

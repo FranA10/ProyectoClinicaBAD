@@ -10,7 +10,7 @@
     <div class="col-md-11">
         <div class="card card-primary">
             <div class="card-header">
-              <h3 class="card-title">General Elements</h3>
+              <h3 class="card-title">Nuevo Tipo de Examen</h3>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
@@ -56,3 +56,24 @@
 </div>
 
   @endsection
+
+  
+  @section('ccs')
+<link rel="stylesheet" href="css/sweetalert2.min.css">
+@stop
+
+@section('js')
+<script src="{{ asset('static/js/sweetalert2.all.min.js') }}"></script>
+  @if(session('crear')=='ok')
+<script>
+Swal.fire({
+  position: 'center',
+  icon: 'success',
+  title: 'Creado con éxito',
+  showConfirmButton: false,
+  timer: 1500
+})
+</script>
+@endif
+
+@stop
