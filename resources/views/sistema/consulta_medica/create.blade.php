@@ -129,13 +129,13 @@
                                         <th>Nombre</th>
                                         <th>Valor</th>
                                       </tr>
-                                     
+                                      
                                       <tr>
                                         <td></td>
                                         <td></td>
                                         <td></td>
                                       </tr>
-                                      
+                                    
                                     </table>
                                   </div>
                               </div>

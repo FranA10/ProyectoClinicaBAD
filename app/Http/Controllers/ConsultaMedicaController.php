@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\ConsultaMedica;
+use App\SignoVital;
+use App\HistorialDiagnostico;
+
 use Illuminate\Http\Request;
 
 class ConsultaMedicaController extends Controller
@@ -14,6 +17,7 @@ class ConsultaMedicaController extends Controller
      */
     public function index()
     {
+        
         $consulta_medica = ConsultaMedica::paginate(10);
         return view('sistema.consulta_medica.lista')->with('consulta_medica',$consulta_medica);
     }
@@ -74,9 +78,10 @@ class ConsultaMedicaController extends Controller
      */
     public function edit($id)
     {
-        //
         $objeto=ConsultaMedica::find($id);
-        return view('sistema.consulta_medica.edit')->with('objeto',$objeto);
+        $objeto_diagnostico = HistorialDiagnostico::where("pk_consulta","=",$objeto->pk_consulta)->get();
+        $objeto_signo=SignoVital::where("pk_consulta","=",$objeto->pk_consulta)->get();
+        return view('sistema.consulta_medica.edit')->with('objeto',$objeto)->with('objeto_signo',$objeto_signo)->with('objeto_diagnostico',$objeto_diagnostico);
     }
 
     /**
