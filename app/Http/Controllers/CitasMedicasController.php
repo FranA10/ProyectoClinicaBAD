@@ -7,6 +7,7 @@ use App\SignoVital;
 use App\HistorialDiagnostico;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CitasMedicasController extends Controller
 {
@@ -134,14 +135,13 @@ class CitasMedicasController extends Controller
      
      * @return \Illuminate\Http\Response
      */
-    public function vistaBD(Request $request)
+    public function vistaBD()
     {
-        print_r($request->pk);
-        print_r('llegooooo');
-        DB::select('EXEC CREARCONSULTAS');
-     
+       // $resultado= DB::select('select * from expediente');
+         $resultado= DB::select('EXEC CREARCONSULTAS');
         $citas_medica = CitaMedica::paginate(10);
-        return view('sistema.citas_medicas.lista')->with('citas_medica',$citas_medica);
+        return response()->json(['ejecutado' => 'Script ejecutado con éxito', 'citas_medicas'=>$citas_medica]);
+
         
     }
 }

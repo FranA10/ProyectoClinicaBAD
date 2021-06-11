@@ -93,10 +93,19 @@
 
   $.ajax({
     type:'GET',
-    url:"{{url('ejecutarview')}} ",
-    data: {pk:'pk'},
+    url:"{{url('ejecutarview')}}",
     success:function(data){
+      Swal.fire({
+  position: 'center',
+  icon: 'success',
+  title: data.ejecutado,
+  showConfirmButton: false,
+  timer: 1500
+})
 
+//CODIGO PARA MOSTRAR LAS CONSULTAS EN LA PANTALLA
+    },    error: function(xhr){
+        console.log(xhr.responseText);
     }
   })
 })
