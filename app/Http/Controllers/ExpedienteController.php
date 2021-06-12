@@ -2,10 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\AltaMedica;
+use App\ConsultaMedica;
 use App\DatosPersonales;
 use App\DTO\ExpedienteDTO;
+use App\Examen;
 use App\Expediente;
 use App\Familiar;
+use App\HistorialEnfermedad;
+use App\Tratamiento;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -54,9 +59,21 @@ return $familiar;
         $expDTO->fechaCreacion=$expediente->fecha_creacion;
         $expDTO->telefono=$datosPersonales->tel_contacto;
         $familiar=$this->getFamiliar($expediente->pk_num_personal);
+        
+        if($datosPersonales->empleado==1)
+            $expDTO->esEmpleado=true;
+        else
+        $expDTO->esEmpleado=false;
         $expDTO->nombreResponsable=$familiar->nombre_1." ".$familiar->nombre_2." ".$familiar->apellido_1;
         $expDTO->contactoResponsable=$familiar->tel_contacto;
-        return view('sistema.expediente.expediente')->with(['objeto'=>$expDTO]);
+        $consultasMedicas=ConsultaMedica::where('pk_id_expediente','=',$expediente->pk_id_expediente);
+        $altasMedicas=AltaMedica::where('pk_id_expediente','=',$expediente->pk_id_expediente);
+        $examenes=Examen::where('pk_id_expediente','=',$expediente->pk_id_expediente);
+        $tratamientos=Tratamiento::where('pk_id_expediente','=',$expediente->pk_id_expediente);
+        $historialEnfermedad=HistorialEnfermedad::where('pk_id_expediente','=',$expediente->pk_id_expediente);
+        return view('sistema.expediente.expediente')
+        ->with(['objeto'=>$expDTO,'consultas'=>$consultasMedicas
+        ,'altas'=>$altasMedicas,'examenes'=>$examenes,'tratamientos'=>$tratamientos,'historialEnf'=>$historialEnfermedad]);
     }
 
     public function mostrarCrear(){
@@ -80,7 +97,13 @@ return $familiar;
     public function crearExpediente(Request $request){
        $nuevoExpediente= new Expediente();
        $ultimo=Expediente::latest('pk_id_expediente')->first();
-       $nuevoExpediente->pk_id_expediente=intval($ultimo->pk_id_expediente)+1;
+       
+       if($ultimo!=null)
+       {
+        $nuevoExpediente->pk_id_expediente=intval($ultimo->pk_id_expediente)+1;
+       }else{
+        $nuevoExpediente->pk_id_expediente=1; 
+       }
        $nuevoExpediente->pk_num_personal=$request->get('sele') ;
         print_r($request->get('sele'));
        $nuevoExpediente->fecha_creacion=Carbon::now();

@@ -12,5 +12,5 @@ class ExpedienteDTO{
     public $fechaCreacion;
     public $nombreResponsable;
     public $contactoResponsable;
-
+    public $esEmpleado;
 }

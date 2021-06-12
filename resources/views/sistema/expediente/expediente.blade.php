@@ -42,7 +42,11 @@
                      <div class="form-group">
                         <label>Es Empleado</label>
                         <label class=" form-control">
-                        <input type="checkbox" checked>
+@if($objeto->esEmpleado)
+<input type="checkbox" disabled checked>
+@else
+<input type="checkbox" disabled>
+@endif
                         </label>
                      </div>
                   </div>
@@ -64,14 +68,8 @@
                         <input type="text" disabled  id="nombre" name="nombre" class="form-control" value="{{$objeto->contactoResponsable}}">
                      </div>
                   </div>
-                  <div class="col-12">
-                     <div class="form-group">
-                        <label>Descripción</label>
-                        <textarea class="form-control" rows="3" placeholder="Enter ..."></textarea>
-                     </div>
-                  </div>
                </div>
-               
+               <hr/>
                <div class="row">
                 <div class="col-12">
                    <div class="card card-primary card-outline card-tabs">
@@ -97,7 +95,7 @@
                       <div class="card-body">
                          <div class="tab-content" id="custom-tabs-three-tabContent">
                             <div class="tab-pane fade active show" id="idConsultas" role="tabpanel" aria-labelledby="idConsultas-tab">
-                                <div class="row"><button class="btn btn-success"><i class="fas fa-plus"></i> </button> </div>
+                                {{-- <div class="row"><button class="btn btn-success"><i class="fas fa-plus"></i> </button> </div> --}}
                                 <br>
                                <div class="row">
                                 <div class="col-12">
@@ -110,6 +108,8 @@
                                           <th>#</th>
 
                                        </tr>
+                                       @if($consultas!=null)
+                                       @foreach($consultas as $consulta)
                                        <tr>
 
                                           <td>Nombre 1</td>
@@ -121,28 +121,8 @@
                                              <a class="btn btn-warning btn-sm" ><i class="fas fa-eye"></i>Ver</a> 
                                           </td>
                                        </tr>
-                                       <tr>
-
-                                         <td>Nombre 1</td>
-                                         <td>Nombre 1</td>
-                                         <td>Nombre 1</td>
-
-                                         <td>25 sdsfsdlfd</td>
-                                         <td>
-                                            <a class="btn btn-warning btn-sm" ><i class="fas fa-eye"></i>Ver</a> 
-                                         </td>
-                                      </tr>
-                                      <tr>
-
-                                         <td>Nombre 1</td>
-                                         <td>Nombre 1</td>
-                                         <td>Nombre 1</td>
-
-                                         <td>25 sdsfsdlfd</td>
-                                         <td>
-                                            <a class="btn btn-warning btn-sm" ><i class="fas fa-eye"></i>Ver</a> 
-                                         </td>
-                                      </tr>
+                                       @endforeach
+                                       @endif
                                     </table>
                                  </div>
                                </div>
@@ -161,39 +141,21 @@
                                              <th>#</th>
 
                                           </tr>
+                                          @if($altas!=null)
+                                          @foreach($altas as $alta)
                                           <tr>
-
+   
                                              <td>Nombre 1</td>
                                              <td>Nombre 1</td>
                                              <td>Nombre 1</td>
-
+   
                                              <td>25 sdsfsdlfd</td>
                                              <td>
                                                 <a class="btn btn-warning btn-sm" ><i class="fas fa-eye"></i>Ver</a> 
                                              </td>
                                           </tr>
-                                          <tr>
-
-                                            <td>Nombre 1</td>
-                                            <td>Nombre 1</td>
-                                            <td>Nombre 1</td>
-
-                                            <td>25 sdsfsdlfd</td>
-                                            <td>
-                                               <a class="btn btn-warning btn-sm" ><i class="fas fa-eye"></i>Ver</a> 
-                                            </td>
-                                         </tr>
-                                         <tr>
-
-                                            <td>Nombre 1</td>
-                                            <td>Nombre 1</td>
-                                            <td>Nombre 1</td>
-
-                                            <td>25 sdsfsdlfd</td>
-                                            <td>
-                                               <a class="btn btn-warning btn-sm" ><i class="fas fa-eye"></i>Ver</a> 
-                                            </td>
-                                         </tr>
+                                          @endforeach
+                                          @endif
                                        </table>
                                     </div>
                                  </div>
@@ -214,39 +176,21 @@
                                               <th>#</th>
  
                                            </tr>
+                                           @if($examenes!=null)
+                                           @foreach($examenes as $exam)
                                            <tr>
- 
+    
                                               <td>Nombre 1</td>
                                               <td>Nombre 1</td>
                                               <td>Nombre 1</td>
- 
+    
                                               <td>25 sdsfsdlfd</td>
                                               <td>
                                                  <a class="btn btn-warning btn-sm" ><i class="fas fa-eye"></i>Ver</a> 
                                               </td>
                                            </tr>
-                                           <tr>
- 
-                                             <td>Nombre 1</td>
-                                             <td>Nombre 1</td>
-                                             <td>Nombre 1</td>
- 
-                                             <td>25 sdsfsdlfd</td>
-                                             <td>
-                                                <a class="btn btn-warning btn-sm" ><i class="fas fa-eye"></i>Ver</a> 
-                                             </td>
-                                          </tr>
-                                          <tr>
- 
-                                             <td>Nombre 1</td>
-                                             <td>Nombre 1</td>
-                                             <td>Nombre 1</td>
- 
-                                             <td>25 sdsfsdlfd</td>
-                                             <td>
-                                                <a class="btn btn-warning btn-sm" ><i class="fas fa-eye"></i>Ver</a> 
-                                             </td>
-                                          </tr>
+                                           @endforeach
+                                           @endif
                                         </table>
                                      </div>
                                  </div>
@@ -266,39 +210,21 @@
                                               <th>#</th>
  
                                            </tr>
+                                           @if($tratamientos!=null)
+                                           @foreach($tratamientos as $trat)
                                            <tr>
- 
+    
                                               <td>Nombre 1</td>
                                               <td>Nombre 1</td>
                                               <td>Nombre 1</td>
- 
+    
                                               <td>25 sdsfsdlfd</td>
                                               <td>
                                                  <a class="btn btn-warning btn-sm" ><i class="fas fa-eye"></i>Ver</a> 
                                               </td>
                                            </tr>
-                                           <tr>
- 
-                                             <td>Nombre 1</td>
-                                             <td>Nombre 1</td>
-                                             <td>Nombre 1</td>
- 
-                                             <td>25 sdsfsdlfd</td>
-                                             <td>
-                                                <a class="btn btn-warning btn-sm" ><i class="fas fa-eye"></i>Ver</a> 
-                                             </td>
-                                          </tr>
-                                          <tr>
- 
-                                             <td>Nombre 1</td>
-                                             <td>Nombre 1</td>
-                                             <td>Nombre 1</td>
- 
-                                             <td>25 sdsfsdlfd</td>
-                                             <td>
-                                                <a class="btn btn-warning btn-sm" ><i class="fas fa-eye"></i>Ver</a> 
-                                             </td>
-                                          </tr>
+                                           @endforeach
+                                           @endif
                                         </table>
                                      </div>
                                  </div>
@@ -319,39 +245,21 @@
                                               <th>#</th>
  
                                            </tr>
+                                           @if($historialEnf!=null)
+                                           @foreach($historialEnf as $historial)
                                            <tr>
- 
+    
                                               <td>Nombre 1</td>
                                               <td>Nombre 1</td>
                                               <td>Nombre 1</td>
- 
+    
                                               <td>25 sdsfsdlfd</td>
                                               <td>
                                                  <a class="btn btn-warning btn-sm" ><i class="fas fa-eye"></i>Ver</a> 
                                               </td>
                                            </tr>
-                                           <tr>
- 
-                                             <td>Nombre 1</td>
-                                             <td>Nombre 1</td>
-                                             <td>Nombre 1</td>
- 
-                                             <td>25 sdsfsdlfd</td>
-                                             <td>
-                                                <a class="btn btn-warning btn-sm" ><i class="fas fa-eye"></i>Ver</a> 
-                                             </td>
-                                          </tr>
-                                          <tr>
- 
-                                             <td>Nombre 1</td>
-                                             <td>Nombre 1</td>
-                                             <td>Nombre 1</td>
- 
-                                             <td>25 sdsfsdlfd</td>
-                                             <td>
-                                                <a class="btn btn-warning btn-sm" ><i class="fas fa-eye"></i>Ver</a> 
-                                             </td>
-                                          </tr>
+                                           @endforeach
+                                           @endif
                                         </table>
                                      </div>
                                  </div>

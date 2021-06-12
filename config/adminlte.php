@@ -288,6 +288,19 @@ return [
             'icon'        => 'fa fa-heart fa-fw',
             //'can'         => '',
         ],
+        [
+            'text'        => 'Tipos de Anexo',
+            'url'       => 'tipo-anexo',
+            'icon'        => 'fas fa-file',
+            //'can'         => '',
+        ],
+        [
+            'text'        => 'Tipos de Examenes',
+            'url'       => 'tipo-examen',
+            'icon'        => 'fas fa-file',
+            //'can'         => '',
+        ],
+
 
         ['header' => 'ADMINISTRATIVA'],
         [
@@ -306,6 +319,12 @@ return [
             'text'        => 'Códigos de diágnostico',
             'route'       => 'listPF',
             'icon'        => 'fas fa-stethoscope fa-fw',
+            //'can'         => '',
+        ],
+        [
+            'text'        => 'Expedientes',
+            'url'       => 'expedientes',
+            'icon'        => 'fas fa-book-medical',
             //'can'         => '',
         ],
         [
