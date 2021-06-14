@@ -18,6 +18,14 @@ use Illuminate\Support\Facades\DB;
 class ExpedienteController extends Controller
 {
 
+    public function __construct()
+    {   
+        //$this->middleware('can:<<nombre del permiso>>')->only('<<nombre/s del metodo del controlador>>');
+        $this->middleware('can:ver-expedientes')->only('listar');
+        $this->middleware('can:crear-expediente');
+
+    }
+
     public function listar(){
         $expedientes=Expediente::paginate(8);
         $objetos= array();

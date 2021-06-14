@@ -7,6 +7,13 @@ use App\CatDiagnostico;
 
 class CatDiagnosticoController extends Controller
 {
+    public function __construct()
+    {   
+        //$this->middleware('can:<<nombre del permiso>>')->only('<<nombre/s del metodo del controlador>>');
+        $this->middleware('can:listCD');
+
+    }
+
     //formulario de Cat Diagnosticos
     public function verFormCatDig(){
         return View('sistema/cat_diagnostico/crear');

@@ -9,6 +9,14 @@ class RootConfigController extends Controller
 {
 
     //formulario del procesos iniciales
+    public function __construct()
+    {   
+        //$this->middleware('can:<<nombre del permiso>>')->only('<<nombre/s del metodo del controlador>>');
+        $this->middleware('can:configuracionRoot');
+        
+
+    }
+
     public function vistaProceso(){
         return View('sistema/root_config/configuracion_inicial');
     }

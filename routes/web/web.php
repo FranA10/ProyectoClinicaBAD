@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-//use admin\UsuarioController;
+use admin\UsuarioController;
 use admin\RoleController;
 
 /*

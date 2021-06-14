@@ -12,6 +12,15 @@ class HistorialDiagnosticoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct()
+    {   
+        //$this->middleware('can:<<nombre del permiso>>')->only('<<nombre/s del metodo del controlador>>');
+        $this->middleware('can:ver_historial_diagnostico')->only('index');
+        $this->middleware('can:ver_historial_diagnostico.create')->only('create', 'store');
+
+    }
+
     public function index()
     {
         $hist_diagnostico=HistorialDiagnostico::paginate(20);
