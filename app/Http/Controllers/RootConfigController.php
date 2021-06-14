@@ -30,4 +30,13 @@ class RootConfigController extends Controller
         
         return back()->with('EJECUTADO','Sexos/Generos generados');
     }
+
+    //Cargar los Paises y ciudades
+    public function ejecutarPSCI(Request $request){
+        $db = DB::connection();
+        $stmt = $db-> getPdo()->prepare("call ADD_PAISES_CIUDADES()");
+        $stmt->execute();
+
+        return back()->with('EJECUTADO','Paises y ciudades generados');
+    }
 }

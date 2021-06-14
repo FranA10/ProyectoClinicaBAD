@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use admin\UsuarioController;
+//use admin\UsuarioController;
 use admin\RoleController;
 
 /*
@@ -27,6 +27,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('procesosRoot', 'RootConfigController@vistaProceso')->name('configuracionRoot');
 Route::post('ejecutarProcesoES', 'RootConfigController@ejecutarES')->name('crearES');
 Route::post('ejecutarProcesoGN', 'RootConfigController@ejecutarGN')->name('crearGN');
+Route::post('ejecutarProcesoPSCI', 'RootConfigController@ejecutarPSCI')->name('crearPSCI');
 
 //Centros Hospitalarios
 Route::get('guardarFormCentro', 'CentroHospitalarioController@crearCentros')->name('formularioCentros');

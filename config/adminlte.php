@@ -288,6 +288,19 @@ return [
             'icon'        => 'fa fa-heart fa-fw',
             'can'  => 'admin.usuarios.index',
         ],
+        [
+            'text'        => 'Tipos de Anexo',
+            'url'       => 'tipo-anexo',
+            'icon'        => 'fas fa-file',
+            //'can'         => '',
+        ],
+        [
+            'text'        => 'Tipos de Examenes',
+            'url'       => 'tipo-examen',
+            'icon'        => 'fas fa-file',
+            //'can'         => '',
+        ],
+
 
         ['header' => 'ADMINISTRATIVA'],
         [
@@ -306,6 +319,12 @@ return [
             'text'        => 'Códigos de diágnostico',
             'route'       => 'listPF',
             'icon'        => 'fas fa-stethoscope fa-fw',
+            //'can'         => '',
+        ],
+        [
+            'text'        => 'Expedientes',
+            'url'       => 'expedientes',
+            'icon'        => 'fas fa-book-medical',
             //'can'         => '',
         ],
         [
@@ -346,22 +365,38 @@ return [
                 ],
             ],
         ],
-        ['header' => 'PACIENTES'],
+
+
+        
+       
+        ['header' => 'Consulta medica'],
         [
-            'text'       => 'important',
-            'icon_color' => 'red',
-            'url'        => '#',
+            'text'       => 'Historico de diagnosticos',
+            'icon' => 'fas fa-hospital-user',
+            'url'        => '/historial_diagnostico',
         ],
         [
-            'text'       => 'warning',
-            'icon_color' => 'yellow',
-            'url'        => '#',
+            'text'       => 'Categorias de diagnostico',
+            'icon'       =>   'fas fa-procedures',
+            'url'        => '/cat_diagnostico',
+        ],
+
+        [
+            'text'       => 'Consulta',
+            'icon' => 'fas fa-clinic-medical',
+            'url'        => '/consulta_medica',
         ],
         [
-            'text'       => 'information',
-            'icon_color' => 'cyan',
-            'url'        => '#',
+            'text'       => 'Signos vitales',
+            'icon' => 'fas fa-stethoscope',
+            'url'        => '/signo-vital',
         ],
+        [
+            'text'       => 'Citas medicas',
+            'icon' => '	fas fa-band-aid',
+            'url'        => '/citas_medicas',
+        ],
+        
     ],
 
     /*

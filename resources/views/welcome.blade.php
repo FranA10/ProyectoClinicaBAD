@@ -72,9 +72,9 @@
                     @else
                         <a href="{{ route('login') }}">Login</a>
 
-                        @if (Route::has('register'))
+                        {{-- @if (Route::has('register'))
                             <a href="{{ route('register') }}">Register</a>
-                        @endif
+                        @endif --}}
                     @endauth
                 </div>
             @endif
@@ -84,9 +84,33 @@
                     Clinica Medica Integral
                 </div>
                 <div class="content">
-                    <h1><img src="vendor/adminlte/dist/img/hospitalRender.png" class="img-circle" alt="Cinque Terre" width="400" height="300"></h1>
+                    <h2><img src="vendor/adminlte/dist/img/hospitalRender.png" class="img-circle" alt="Cinque Terre" width="400" height="300"></h2>
                 </div>
             </div>
         </div>
     </body>
+<div class="content">
+<footer id="footer" class="py-1 bg-inverse">
+   <div class="footer-main">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="contact-info">
+                        <h5 class="nopadding">Contáctanos</h5>
+                        <p>Av. Principal Colonia Escalor, CLINICA MEDICA INTEGRAL</p>
+                        <p><i class="fa fa-phone-square"></i>Phone : (503) 2210-7788, 2210-8899</p>
+                        <p><i class="fa fa-envelope"></i>E-mail : <a class="mail-link"> AdministracionClinica@gmail.com</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-foot">
+        <div class="container">
+                <p>Copyright &copy; 2021 - FDK smart Solutions</p>
+        </div>
+    </div>
+</footer>
+</div>
+
 </html>

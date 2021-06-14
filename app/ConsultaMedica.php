@@ -8,5 +8,6 @@ class ConsultaMedica extends Model
 {
     protected $table = 'consulta_medica';
     protected $primaryKey = 'pk_consulta';
+    public $timestamps = false;
 
 }

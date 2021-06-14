@@ -8,5 +8,7 @@ class CitaMedica extends Model
 {
     protected $table = 'cita_medica';
     protected $primaryKey = 'pk_cita_medica';
+    public $timestamps = false;
+
  
 }
