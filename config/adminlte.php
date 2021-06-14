@@ -304,8 +304,13 @@ return [
 
         ['header' => 'ADMINISTRATIVA'],
         [
-            'text' => 'Datos personales',
-            'url'  => 'admin/settings',
+            'text' => 'Administrar Empleados',
+            'route' => 'FormDE',
+            'icon' => 'fa fa-address-card',
+        ],
+        [
+            'text' => 'Administrar Pacientes',
+            'route' => 'FormDP',
             'icon' => 'fa fa-address-card',
         ],
         [
