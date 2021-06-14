@@ -302,7 +302,9 @@ return [
         ],
 
 
-        ['header' => 'ADMINISTRATIVA'],
+        ['header' => 'ADMINISTRATIVA',
+         'can'  => 'listPF',
+        ],
         [
             'text' => 'Datos personales',
             'url'  => 'admin/settings',
@@ -314,7 +316,9 @@ return [
             'icon'        => 'fa fa-graduation-cap fa-fw',
             'can'         => 'listPF',
         ],
-        ['header' => 'MEDICINA'],
+        ['header' => 'MEDICINA',
+        'can'     => 'ver-examenes',
+        ],
         [
             'text'        => 'Examenes',
             'route'       => 'ver-examenes',
@@ -337,7 +341,9 @@ return [
 
         
        
-        ['header' => 'CONSULTA MEDICA'],
+        ['header' => 'CONSULTA MEDICA',
+        'can'         => 'ver_historial_diagnostico',
+        ],
         [
             'text'       => 'Historico de diagnosticos',
             'icon'       => 'fas fa-hospital-user',

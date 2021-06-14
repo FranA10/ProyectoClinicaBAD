@@ -11,8 +11,8 @@ class ExamenMedicoController extends Controller
     public function __construct()
     {   
         //$this->middleware('can:<<nombre del permiso>>')->only('<<nombre/s del metodo del controlador>>');
-        $this->middleware('can:crear_examenes')->only('crearExamen');
-        $this->middleware('can:ver_examen')->only('lista');
+        $this->middleware('can:crear_examen')->only('crearExamen');
+        $this->middleware('can:ver-examenes')->only('lista');
 
 
     }
