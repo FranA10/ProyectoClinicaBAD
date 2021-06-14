@@ -255,7 +255,7 @@ return [
         //     'label_color' => 'success',
         // ],
         ['header' => 'CONFIGURACIÓN DE SISTEMA',
-         //'can'  => '',   
+         'can'  => 'admin.usuarios.index',   
         ],
         [
             'text'        => 'Usuarios',
@@ -274,19 +274,19 @@ return [
             'text'        => 'Centros Hospitalarios',
             'route'       => 'listCentro',
             'icon'        => 'fas fa-hospital fa-fw',
-            //'can'         => '',
+            'can'  => 'admin.usuarios.index',
         ],
         [
             'text'        => 'Ajustes iniciales',
             'route'       => 'configuracionRoot',
             'icon'        => ' 	fa fa-cogs fa-fw',
-            //'can'         => '',
+            'can'  => 'admin.usuarios.index',
         ],
         [
             'text'        => 'Tipos de Sangre',
             'route'       => 'listarTS',
             'icon'        => 'fa fa-heart fa-fw',
-            //'can'         => '',
+            'can'  => 'admin.usuarios.index',
         ],
 
         ['header' => 'ADMINISTRATIVA'],
