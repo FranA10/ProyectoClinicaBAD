@@ -26,4 +26,8 @@ class ExamenMedicoController extends Controller
 
         return view('sistema.examen_medico.create');
     }
+    public function verExamen($oidExamen){
+        $objeto=Examen::find($oidExamen);
+        return view('sistema.expediente.verExamen')->with(['objeto'=>$objeto]);        
+    }
 }

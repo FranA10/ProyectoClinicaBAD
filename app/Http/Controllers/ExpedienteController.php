@@ -3,12 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\AltaMedica;
+use App\CatDiagnostico;
 use App\ConsultaMedica;
 use App\DatosPersonales;
 use App\DTO\ExpedienteDTO;
+use App\DTO\HistorialDiagnosticoDTO;
 use App\Examen;
 use App\Expediente;
 use App\Familiar;
+use App\HistorialDiagnostico;
 use App\HistorialEnfermedad;
 use App\Tratamiento;
 use Carbon\Carbon;
@@ -74,14 +77,29 @@ return $familiar;
         $expDTO->esEmpleado=false;
         $expDTO->nombreResponsable=$familiar->nombre_1." ".$familiar->nombre_2." ".$familiar->apellido_1;
         $expDTO->contactoResponsable=$familiar->tel_contacto;
-        $consultasMedicas=ConsultaMedica::where('pk_id_expediente','=',$expediente->pk_id_expediente);
-        $altasMedicas=AltaMedica::where('pk_id_expediente','=',$expediente->pk_id_expediente);
-        $examenes=Examen::where('pk_id_expediente','=',$expediente->pk_id_expediente);
-        $tratamientos=Tratamiento::where('pk_id_expediente','=',$expediente->pk_id_expediente);
-        $historialEnfermedad=HistorialEnfermedad::where('pk_id_expediente','=',$expediente->pk_id_expediente);
+        $consultasMedicas=ConsultaMedica::where('pk_id_expediente','=',$expediente->pk_id_expediente)->get();
+
+
+        $altasMedicas=AltaMedica::where('pk_id_expediente','=',$expediente->pk_id_expediente)->get();
+        $examenes=Examen::where('pk_id_expediente','=',$expediente->pk_id_expediente)->get();
+        
+        $historialesDiagnostico=HistorialDiagnostico::where('pk_id_expediente','=',$expediente->pk_id_expediente)->get();
+        $historiales=array();
+        foreach($historialesDiagnostico as $hist){
+            $nuevoHistDTO= new HistorialDiagnosticoDTO();
+            $nuevoHistDTO->oid=$hist->pk_diagnostico;
+            $nuevoHistDTO->fecha=$hist->fecha;
+            $nuevoHistDTO->hora=$hist->hora;
+            $nuevoHistDTO->observaciones=$hist->observaciones;
+            $tipoDiagnostico=CatDiagnostico::find($hist->pk_cod_inter);
+            $nuevoHistDTO->nombreTipoDiagnostico=$tipoDiagnostico->nombre_diagnostico;
+            array_push($historiales,$nuevoHistDTO);
+        }
+        
+        $historialEnfermedades=HistorialEnfermedad::where('pk_id_expediente','=',$expediente->pk_id_expediente)->get();
         return view('sistema.expediente.expediente')
         ->with(['objeto'=>$expDTO,'consultas'=>$consultasMedicas
-        ,'altas'=>$altasMedicas,'examenes'=>$examenes,'tratamientos'=>$tratamientos,'historialEnf'=>$historialEnfermedad]);
+        ,'altas'=>$altasMedicas,'examenes'=>$examenes,'histEnfermedades'=>$historialEnfermedades,'historialDiagnosticos'=>$historiales]);
     }
 
     public function mostrarCrear(){
@@ -119,4 +137,29 @@ return $familiar;
        $nuevoExpediente->save();
         return back()->with(['crear' => 'ok']);
     }
+
+    public function verConsulta($oidConsulta){
+        $consulta=ConsultaMedica::find($oidConsulta);
+        return view('sistema.expediente.verConsulta')->with(['objeto'=>$consulta]);        
+    }
+
+    public function verAlta($oidAlta){
+        $objeto=AltaMedica::find($oidAlta);
+        return view('sistema.expediente.verAlta')->with(['objeto'=>$objeto]);        
+    }
+
+
+    public function verHistorial($oidHistorial){
+        $diagnostico=HistorialDiagnostico::find($oidHistorial);
+        $tipoDiagnostico= CatDiagnostico::find($diagnostico->pk_cod_inter);
+        $objeto= new HistorialDiagnosticoDTO();
+        $objeto->oid=$diagnostico->pk_diagnostico;
+        $objeto->fecha=$diagnostico->fecha;
+        $objeto->hora=$diagnostico->hora;
+        $objeto->observaciones=$diagnostico->observaciones;
+        $objeto->nombreTipoDiagnostico=$tipoDiagnostico->nombre_diagnostico;
+        $objeto->oidExpediente=$diagnostico->pk_id_expediente;
+        return view('sistema.expediente.verHistorial')->with(['objeto'=>$objeto]);        
+    }
+
 }
