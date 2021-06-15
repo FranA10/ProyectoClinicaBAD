@@ -82,6 +82,14 @@ class RoleSeeder extends Seeder
         $permission31 = Permission::create(['name' => 'ver_listado_citas.create', 'description'=>'Crear una cita médica']);
         $permission32 = Permission::create(['name' => 'ver_listado_citas.edit', 'description'=>'Crear una cita médica']);
         $permission33 = Permission::create(['name' => 'ver_listado_citas.generate', 'description'=>'Generar citas medicas (su)']);
+        
+        //Ver datos de Empleados
+        $permission34 = Permission::create(['name' => 'ListDE', 'description'=>'Ver datos de empleados']);
+        $permission35 = Permission::create(['name' => 'FormDE', 'description'=>'Añadir datos de empleados']);
+
+        //Ver datos de Pacientes
+        $permission36 = Permission::create(['name' => 'FormDP', 'description'=>'Añadir datos de pacientes']);
+
 
         $todos= [$permission1,
         $permission2,
@@ -115,7 +123,11 @@ class RoleSeeder extends Seeder
         $permission30,
         $permission31,
         $permission32,
-        $permission33
+        $permission33,
+        $permission34,
+        $permission35,
+        $permission36
+
     ];
 
         //PARA ROL DE ADMINISTRADOR

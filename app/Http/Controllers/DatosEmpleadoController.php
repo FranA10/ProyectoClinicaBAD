@@ -8,6 +8,17 @@ use GuzzleHttp\Psr7\Message;
 
 class DatosEmpleadoController extends Controller
 {
+
+    public function __construct()
+    {   
+        //$this->middleware('can:<<nombre del permiso>>')->only('<<nombre/s del metodo del controlador>>');
+        $this->middleware('can:ListDE')->only('MostrarEmpleados');
+        $this->middleware('can:FormDE')->only('FormEmp', 'savePerson');
+        $this->middleware('can:FormDE')->only('FormPac', 'savePerson');
+
+
+    }
+    
     public function MostrarEmpleados(){
         return View('sistema/datos_emp/listar');
     }

@@ -307,8 +307,10 @@ return [
         ],
         [
             'text' => 'Administrar Empleados',
-            'route' => 'FormDE',
+            'route' => 'ListDE',
             'icon' => 'fa fa-address-card',
+            'can'  => 'ListDE',
+
         ],
         [
             'text' => 'Administrar Pacientes',
