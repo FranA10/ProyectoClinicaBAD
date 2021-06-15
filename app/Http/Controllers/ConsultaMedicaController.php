@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\ConsultaMedica;
 use App\SignoVital;
 use App\HistorialDiagnostico;
+use Carbon\Carbon;
 
 use Illuminate\Http\Request;
 
@@ -28,7 +29,7 @@ class ConsultaMedicaController extends Controller
     public function index()
     {
         
-        $consulta_medica = ConsultaMedica::paginate(10);
+        $consulta_medica = ConsultaMedica::paginate(7);
         return view('sistema.consulta_medica.lista')->with('consulta_medica',$consulta_medica);
     }
 
@@ -54,8 +55,9 @@ class ConsultaMedicaController extends Controller
         $consulta->pk_consulta=ConsultaMedica::count()+1;
         
    
-        $consulta->fecha=$request->get('fecha');
+        $consulta->fecha=Carbon::parse($request->get('fecha'));
         $consulta->area_consulta=$request->get('area');
+        $consulta->hora=Carbon::parse( $request->get('hora'));
         $consulta->indicaciones=$request->get('indicaciones');
         $consulta->pre_diagnostico=$request->get('pre_diagnostico');
         $consulta->sintomatologia=$request->get('Sintomatologia');
@@ -66,7 +68,7 @@ class ConsultaMedicaController extends Controller
 
         
         $consulta->save();
-        return NULL;
+        return back()->with(['crear' => 'ok']);
     }
 
     /**
@@ -107,7 +109,11 @@ class ConsultaMedicaController extends Controller
         $consulta= ConsultaMedica::find($id);
         
    
-        $consulta->fecha=$request->get('fecha');
+        $consulta->fecha=Carbon::parse($request->get('fecha'));
+       
+        $consulta->hora=Carbon::parse( $request->get('hora'));
+
+        // $consulta->fecha=$request->get('fecha');
         $consulta->area_consulta=$request->get('area');
         $consulta->indicaciones=$request->get('indicaciones');
         $consulta->pre_diagnostico=$request->get('pre_diagnostico');

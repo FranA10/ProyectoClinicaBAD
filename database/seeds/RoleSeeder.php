@@ -72,7 +72,9 @@ class RoleSeeder extends Seeder
         $permission25 = Permission::create(['name' => 'ver_listado_consultas', 'description'=>'Ver listado de consultas médicas']);
         $permission26 = Permission::create(['name' => 'ver_listado_consultas.create', 'description'=>'Crear un diagnostico']);
         $permission27 = Permission::create(['name' => 'ver_listado_consultas.edit', 'description'=>'Editar un diagnostico']);
-
+        $permission37 = Permission::create(['name' => 'ver_horarios', 'description'=>'Añadir datos de horarios']);
+        $permission38 = Permission::create(['name' => 'ver_horarios.create', 'description'=>'Crear horarios']);
+        
         //Signos vitales
         $permission28 = Permission::create(['name' => 'ver_listado_signos', 'description'=>'Ver listado de signos vitales']);
         $permission29 = Permission::create(['name' => 'ver_listado_signos.create', 'description'=>'Añadir signos vitales']);
@@ -126,7 +128,10 @@ class RoleSeeder extends Seeder
         $permission33,
         $permission34,
         $permission35,
-        $permission36
+        $permission36,
+        $permission37,
+        
+        $permission38
 
     ];
 

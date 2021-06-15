@@ -9,6 +9,8 @@ Route::resource('historial_diagnostico', 'HistorialDiagnosticoController')->name
 Route::resource('cat_diagnostico', 'CategoriaDiagnosticoController'); 
 Route::resource('consulta_medica', 'ConsultaMedicaController')->names('ver_listado_consultas'); 
 Route::resource('citas_medicas', 'CitasMedicasController'); 
+Route::resource('horarios', 'HorariosController')->names('ver_horarios'); 
+
 Route::get('ejecutarview','CitasMedicasController@vistaBD');
 
 

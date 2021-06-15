@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\CitaMedica;
 use App\SignoVital;
 use App\HistorialDiagnostico;
+use App\Horario;
+use Carbon\Carbon;
+
 use DB;
 
 
@@ -43,7 +46,9 @@ class CitasMedicasController extends Controller
      */
     public function create()
     {
-        return view('sistema.citas_medicas.crear');
+        $horarios = Horario::get();
+
+        return view('sistema.citas_medicas.crear')->with('horarios',$horarios);
     }
 
     /**
@@ -56,10 +61,13 @@ class CitasMedicasController extends Controller
     {
         $cita= new CitaMedica();
         $cita->pk_cita_medica=CitaMedica::count()+1;
+        $cita->pk_horario=$request->get('valor');
         
-   
+        
+        $cita->hora_cita=Carbon::parse( $request->get('hora'));
+
         $cita->fecha_cita_medica=$request->get('fecha');
-        $cita->hora_cita=$request->get('hora');
+    
         $cita->observaciones_cita=$request->get('observaciones');
 
 
@@ -96,8 +104,10 @@ class CitasMedicasController extends Controller
     public function edit($id)
     {
         $objeto=CitaMedica::find($id);
-       
-        return view('sistema.citas_medicas.edit')->with('objeto',$objeto);
+        $seleccionado = Horario::find($objeto->pk_horario);
+        $horarios = Horario::get();
+
+        return view('sistema.citas_medicas.edit')->with('objeto',$objeto)->with('horarios',$horarios)->with('seleccionado',$seleccionado);
     }
 
     /**
@@ -113,10 +123,15 @@ class CitasMedicasController extends Controller
         $cita= CitaMedica::find($id);
         
    
+        $cita->pk_horario=$request->get('valor');
+        
+        $cita->hora_cita=Carbon::parse( $request->get('hora'));
+
         $cita->fecha_cita_medica=$request->get('fecha');
-        $cita->hora_cita=$request->get('hora');
-        $cita->observaciones_cita_medica=$request->get('observaciones');
-   
+    
+        $cita->observaciones_cita=$request->get('observaciones');
+
+
   
 
 
@@ -136,6 +151,7 @@ class CitasMedicasController extends Controller
      */
     public function destroy($id)
     {
+
         CitaMedica::destroy($id);
         return redirect('/citas_medicas')->with('eliminar','ok');
     }
@@ -152,8 +168,8 @@ class CitasMedicasController extends Controller
     public function vistaBD()
     {
         $db = DB::connection();
-        $stmt = $db-> getPdo()->prepare("exec crearConsultas()");
-        $stmt->execute();
+        $stmt = $db-> getPdo()->prepare("call crearConsultas()");
+        // $stmt->execute();
         // try
         // {
         //     (DB::select('call crearConsultas()'));

@@ -49,7 +49,7 @@
                     <tr>
                      
                       <td class="col-md-2">{{$cita->fecha_cita_medica}}</td>
-                      <td class="col-md-1">{{$cita->hora_cita_medica}}</td>
+                      <td class="col-md-1">{{date("H:i:s",strtotime($cita->hora_cita))}}</td>
                       <td class="col-md-7">{{$cita->observaciones_cita}}</td>
                       
                       <td class="col-md-2">
@@ -69,6 +69,7 @@
                     </tr>
                     @endforeach
                   </table>
+                  {{ $citas_medica->links()}}
                 </div>
                 <!-- /.card-body -->
               </div>
