@@ -33,13 +33,30 @@
                     <div class="col-4">
                         <div class="form-group">
                             <label>Usuario</label>
-                            <input disabled  type="text" id="Descripcion" name="Descripcion" class="form-control" placeholder="" >
+                            <input disabled  type="text" id="Descripcion" name="Descripcion" class="form-control" placeholder="Root" disabled >
                           </div>
                     </div>
                     <div class="col-4">
                         <div class="form-group">
-                            <label>Horario</label>
+                          <div class="form-group">
+                            {{-- <label>Dia</label> --}}
+                            <div class="form-group">
+                                <label for="demo_overview" id="seleccion">Horarios</label>
+                                  <select id="demo_overview" class="form-control" data-role="select-dropdown"  value = "select-dropdown" name="valor">
+                                    <option selected>Seleccion</option>
+                                    @foreach($horarios as $horario)
+                                      <option value="{{$horario->pk_horario}}">{{$horario->dia_semana.'    '}}{{date("H:i:s",strtotime($horario->hora_inicio.'    '))}}{{date("H:i:s",strtotime($horario->hora_fin))}}</option>
+                                    @endforeach
+                                    
+                                    
+
+                                </select>
+                              </div>
+                            {{-- <input type="time" id="HoraInicio" name="HoraInicio" class="form-control" placeholder="" > --}}
+                        </div>
+                            {{-- <label>Horario</label>
                             <input type="text" id="Descripcion" name="Descripcion" class="form-control" placeholder="" >
+                           --}}
                           </div>
                     </div>
                     <div class="col-4">

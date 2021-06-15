@@ -39,9 +39,15 @@
                     </div>
                     <div class="col-4">
                         <div class="form-group">
-                            <label>Horario</label>
-                            <input type="text" id="Descripcion" name="Descripcion" class="form-control" placeholder="" >
-                          </div>
+                          <label for="demo_overview" id="seleccion">Horarios</label>
+                          <select id="demo_overview" class="form-control" data-role="select-dropdown"  value = "select-dropdown" name="valor">
+                            <option selected>Seleccion</option>
+                            
+                            @foreach($horarios as $horario)
+                            <option value="{{$horario->pk_horario}}">{{$horario->dia_semana.'    '}}{{date("H:i:s",strtotime($horario->hora_inicio.'    '))}}{{date("H:i:s",strtotime($horario->hora_fin.'    '))}}</option>
+                          @endforeach
+                        </select>    
+                        </div>
                     </div>
                     <div class="col-4">
                         <div class="form-group">
@@ -52,13 +58,13 @@
                     <div class="col-4">
                         <div class="form-group">
                             <label>Hora</label>
-                            <input type="time" id="hora" name="hora" class="form-control" placeholder="" >
+                            <input type="time" id="hora" value ={{date("H:i:s",strtotime($objeto->hora_cita))}} name="hora" class="form-control" placeholder="" >
                           </div>
                     </div>
                     <div class="col-12">
                         <div class="form-group">
                             <label>Observaciones</label>
-                            <input type="text" value={{$objeto->observaciones_cita}} id="observaciones" name="observaciones" class="form-control" placeholder="" >
+                            <input type="text-area" value={{$objeto->observaciones_cita}} id="observaciones" name="observaciones" class="form-control"   >
                           </div>
                     </div>
                    

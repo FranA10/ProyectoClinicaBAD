@@ -26,14 +26,14 @@
                                 <div class="col-3">
                                   <div class="form-group">
                                     <label>Fecha</label>
-                                    <input type="date"  id="fecha" value="{{$objeto->fecha}}" name="fecha" class="form-control" placeholder="">
+                                    <input type="date"  id="fecha" value="{{$objeto->Fecha}}" name="fecha" class="form-control" placeholder="">
                                   </div>
                                 </div>
                                 
                                 <div class="col-3">
                                     <div class="form-group">
                                         <label>Hora</label>
-                                        <input type="time" id="hora" name="hora" class="form-control" placeholder="" >
+                                        <input type="time" id="hora" name="hora" value="{{date("H:i:s",strtotime($objeto->hora))}}" class="form-control" placeholder="" >
                                       </div>
                                 </div>
                                 <div class="col-3">
@@ -208,7 +208,7 @@
                                           <input   type="date" enabled id="fecha" value= {{$diagnostico->fecha}} name="fecha" class="form-control" placeholder="observaciones">
                                         </td>
                                         <td class="col-md-3">
-                                          <input type="time"  id="hora" name="hora" class="form-control" placeholder="observaciones">
+                                          <input type="time"  id="hora" name="hora" class="form-control" value={{date("H:i:s",strtotime($diagnostico->hora))}} placeholder="observaciones">
                                           </td>
                                         <td class="col-md-3">
                                           <input type="text"  id="observaciones" value= {{$diagnostico->observaciones}} name="observaciones" class="form-control" placeholder="observaciones">

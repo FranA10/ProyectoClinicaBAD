@@ -47,8 +47,9 @@
                       <td>{{$consulta->exam_fisico}}</td>
                       <td>{{$consulta->area_consulta}}<span class="tag tag-success"> </span></td>
                       <td>
-                        <form action="{{ route('consulta_medica.destroy', $consulta->pk_consulta)}}" method="POST" class="eliminarRegistro">
-                          
+                        <form action="{{ route('ver_listado_consultas.destroy', $consulta->pk_consulta)}}" method="POST" class="eliminarRegistro">
+                          {{-- <form action="{{ route('historial_diagnostico.destroy', $historial->pk_diagnostico)}}" method="POST" class="eliminarRegistro"> --}}
+                        
                            @method('DELETE')
                            @csrf 
                            <a class="btn btn-warning btn-sm" href="{{url('consulta_medica/'.$consulta->pk_consulta.'/edit')}}"><i class="fas fa-pencil-alt"></i></a> 
@@ -61,6 +62,7 @@
                     </tr>
                     @endforeach
                   </table>
+                  {{ $consulta_medica->links()}}
                 </div>
                 <!-- /.card-body -->
               </div>
@@ -81,7 +83,7 @@
 @section('js')
 <script src="{{ asset('static/js/sweetalert2.all.min.js') }}"></script>
 
-@if(session('eliminar')=='ok')
+@if(session('eliminarRegistro')=='ok')
 <script>
 Swal.fire({
   position: 'center',

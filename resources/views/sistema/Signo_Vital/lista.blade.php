@@ -35,7 +35,7 @@
                      
                       <td>{{$signo->nombre_signo}}</td>
                       <td>{{$signo->valor_signo}}</td>
-                      <td></td>
+                      <td>{{$signo->pk_consulta}}</td>
                       <td>
                         <form action="" method="POST" class="eliminarRegistro">
                          @method('DELETE')

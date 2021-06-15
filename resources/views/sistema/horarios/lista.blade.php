@@ -1,19 +1,31 @@
 @extends('adminlte::page')
 
 @section('content_header')
-    <h3>Historico de diagnosticos</h3>
+    {{-- <h3>Horarios</h3> --}}
 @endsection
 
 
 @section('content')
-    
+
         <!-- /.row -->
         <div class="row">
             <div class="col-md-12">
               <div class="card">
                 <div class="card-header">
-            
-                 <a class="btn btn-success" href="{{ url('/historial_diagnostico/create')  }}">Agregar historial</a>
+                  <div class="row">
+
+                    <div class="col-md-5">
+                     {{-- <a class="btn btn-success"href="{{ url('/consulta_medica/create')  }}">Nueva consulta</a> --}}
+                     <a class="btn btn-success" href="{{ url('/horarios/create')  }}">Agregar horarios</a>
+
+                    </div>
+                     <div class="col-md-7"><h3>Horarios</h3>
+                     </div>
+
+
+                   </div>
+
+
                   <div class="card-tools">
                     <div class="input-group input-group-sm" style="width: 150px;">
                     </div>
@@ -23,34 +35,40 @@
                 <div class="card-body table-responsive p-0">
                   <table class="table table-hover">
                     <tr>
-                      <th>Fecha</th>
-                      <th>Hora</th>
-                      <th>Observaciones</th>
+                      <th>Dia</th>
+                      <th>Hora inicio</th>
+                      <th>Hora fin</th>
+                      <th>Estado</th>
                       <th></th>
 
                     </tr>
-                    @foreach($hist_diagnostico as $historial)
+                    @foreach($horarios as $horario)
                     <tr>
-                      
-                      <td>{{$historial->fecha}}</td>
-                      <td class="col-md-1">{{date("H:i:s",strtotime($historial->hora))}}</td>
-                      {{-- <td>{{$historial->hora}}</td> --}}
-                      <td>{{$historial->observaciones}}<span class="tag tag-success"> </span></td>
+
+                      <td>{{ $horario->dia_semana }}</td>
+                      <td>{{date("H:i:s",strtotime($horario->hora_inicio))}}</td>
+
+                      <td>{{date("H:i:s",strtotime($horario->hora_fin))}}</td>
+
+                      {{-- <td>{{$horario->hora_fin}}</td> --}}
+                      <td>{{$horario->estado_horario}}</td>
+
+                      {{-- <td><span class="tag tag-success"> </span></td> --}}
                       <td>
-                        <form action="{{ route('ver_historial_diagnostico.destroy', $historial->pk_diagnostico)}}" method="POST" class="eliminarRegistro">
-                          
-                           @method('DELETE')
-                           @csrf 
-                          {{-- <button class="btn btn-warning btn-sm"><i class="fas fa-pencil-alt"></i></button>  --}}
+                        {{-- <form action="{{ route('ver_historial_diagnostico.destroy', $historial->pk_diagnostico)}}" method="POST" class="eliminarRegistro"> --}}
+
+                           {{-- @method('DELETE')
+                           @csrf
+                          <button class="btn btn-warning btn-sm"><i class="fas fa-pencil-alt"></i></button>
                             <button type="submit" class="btn btn-danger btn-sm">
                                 <i class="fas fa-trash-alt"></i>
-                            </button>
-                        </form>
+                            </button> --}}
+                        {{-- </form> --}}
                         </td>
                     </tr>
                     @endforeach
                   </table>
-                  {{ $hist_diagnostico->links() }}
+                  {{ $horarios->links() }}
 
                 </div>
                 <!-- /.card-body -->
@@ -59,7 +77,7 @@
             </div>
           </div><!-- /.row -->
 
-          
+
 @endsection
 
 @section('ccs')
@@ -103,5 +121,5 @@ Swal.fire({
 
 
 </script>
-@stop   
+@stop
 

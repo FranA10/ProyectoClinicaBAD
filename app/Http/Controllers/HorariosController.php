@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\HistorialDiagnostico;
+use App\Horario;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 
-class HistorialDiagnosticoController extends Controller
+class HorariosController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,15 +17,15 @@ class HistorialDiagnosticoController extends Controller
     public function __construct()
     {   
         //$this->middleware('can:<<nombre del permiso>>')->only('<<nombre/s del metodo del controlador>>');
-        $this->middleware('can:ver_historial_diagnostico')->only('index');
-        $this->middleware('can:ver_historial_diagnostico.create')->only('create', 'store');
+        $this->middleware('can:ver_horarios')->only('index');
+        $this->middleware('can:ver_horarios.create')->only('create', 'store');
 
     }
 
     public function index()
     {
-        $hist_diagnostico=HistorialDiagnostico::paginate(7);
-        return view('sistema.historial_diagnostico.lista')->with('hist_diagnostico',$hist_diagnostico) ;
+        $horarios=Horario::paginate(8);
+        return view('sistema.horarios.lista')->with('horarios',$horarios) ;
     }
 
     /**
@@ -35,7 +35,7 @@ class HistorialDiagnosticoController extends Controller
      */
     public function create()
     {
-        return view('sistema.historial_diagnostico.create');
+        return view('sistema.horarios.create');
     }
 
     /**
@@ -46,15 +46,17 @@ class HistorialDiagnosticoController extends Controller
      */
     public function store(Request $request)
     {
-        $diagnostico= new HistorialDiagnostico();
-        $diagnostico->pk_diagnostico=HistorialDiagnostico::count()+1;
-          
-        $diagnostico->hora=Carbon::parse( $request->get('hora'));
-        $diagnostico->fecha= ($request->get('fecha'));
-        // $diagnostico->hora= $request->get('hora');
-        $diagnostico->observaciones=$request->get('observaciones');
-        $diagnostico->save();
-        return redirect('/historial_diagnostico');
+        $horario= new Horario();
+        $horario->pk_horario=Horario::count()+1;
+        // $horario->hora=Carbon::parse( $request->get('hora'));
+        $horario->hora_inicio=Carbon::parse( $request->get('HoraInicio'));
+        $horario->hora_fin=Carbon::parse( $request->get('HoraFin'));
+
+        $horario->dia_semana= ($request->get('valor'));
+        
+        $horario->estado_horario='ACTIVO';
+        $horario->save();
+        return redirect('/horarios');
     }
 
     /**

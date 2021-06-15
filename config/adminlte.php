@@ -384,6 +384,13 @@ return [
             'can'        => 'ver_listado_citas',
 
         ],
+        [
+            'text'       => 'Horarios',
+            'icon' => '	far fa-calendar-times',
+            'url'        => '/horarios',
+            'can'        => 'ver_horarios',
+
+        ],
         
     ],
 
