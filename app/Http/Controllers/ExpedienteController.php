@@ -115,15 +115,13 @@ return $familiar;
     public function obtenerDatosPersonales(Request $request){
         $objeto=DatosPersonales::find($request->pk);
         $familiar=$this->getFamiliar($request->pk);
-        
         return response()->json(['responsable'=>$familiar->nombre_1." ".$familiar->nombre_2." ".$familiar->apellido_1,'telResponsable'=>$familiar->tel_contacto ,'success'=>true, 'data'=>$objeto]);
-
     }
 
     public function crearExpediente(Request $request){
+
        $nuevoExpediente= new Expediente();
        $ultimo=Expediente::latest('pk_id_expediente')->first();
-       
        if($ultimo!=null)
        {
         $nuevoExpediente->pk_id_expediente=intval($ultimo->pk_id_expediente)+1;

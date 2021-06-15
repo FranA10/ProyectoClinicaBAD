@@ -42,10 +42,18 @@ class TipoAnexoController extends Controller
     */
    public function store(Request $request)
    {
+    $validator = $this->validate($request,[
+        'tipo_anexo'=>'required|string|max:25',
+    ]);
        $objeto= new TipoAnexo();
-       $objeto->id_tipo_anexo=TipoAnexo::count()+1;
+       $ultimo=TipoAnexo::latest('id_tipo_anexo')->first();
+       if($ultimo!=null)
+       {
+        $objeto->id_tipo_anexo=intval($ultimo->id_tipo_anexo)+1;
+       }else{
+        $objeto->id_tipo_anexo=1; 
+       }
        $objeto->tipo_anexo= $request->get('nombre');
-
        $objeto->save();
        return back()->with(['crear' => 'ok']);
    }
