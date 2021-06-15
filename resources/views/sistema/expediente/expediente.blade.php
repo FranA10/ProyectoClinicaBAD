@@ -85,11 +85,11 @@
                                 <a class="nav-link" id="idExamenes-tab" data-toggle="pill" href="#idExamenes" role="tab" aria-controls="idExamenes" aria-selected="false">Examenes</a>
                              </li>
                              <li class="nav-item">
-                                <a class="nav-link" id="idTratamientos-tab" data-toggle="pill" href="#idTratamientos" role="tab" aria-controls="idTratamientos" aria-selected="false">Tratamientos</a>
+                                <a class="nav-link" id="idTratamientos-tab" data-toggle="pill" href="#idTratamientos" role="tab" aria-controls="idTratamientos" aria-selected="false">Historial Diagnosticos</a>
                              </li>
-                             <li class="nav-item">
-                                <a class="nav-link" id="idHistorial-tab" data-toggle="pill" href="#idHistorial" role="tab" aria-controls="idHistorial" aria-selected="false">Historial Clínico</a>
-                             </li>
+                             {{-- <li class="nav-item">
+                                <a class="nav-link" id="idHistorial-tab" data-toggle="pill" href="#idHistorial" role="tab" aria-controls="idHistorial" aria-selected="false">Historial-Enfermedades</a>
+                             </li> --}}
                          </ul>
                       </div>
                       <div class="card-body">
@@ -101,10 +101,13 @@
                                 <div class="col-12">
                                     <table class="table table-hover">
                                        <tr>
-                                          <th>Ingreso</th>
+                                          <th>Area Consulta</th>
                                           <th>Fecha</th>
                                           <th>Hora</th>
                                           <th>Indicaciones</th>
+                                          <th>Sintomatologia</th>
+                                          <th>Consulta por</th>
+
                                           <th>#</th>
 
                                        </tr>
@@ -112,13 +115,14 @@
                                        @foreach($consultas as $consulta)
                                        <tr>
 
-                                          <td>Nombre 1</td>
-                                          <td>Nombre 1</td>
-                                          <td>Nombre 1</td>
-
-                                          <td>25 sdsfsdlfd</td>
+                                          <td>{{$consulta->area_consulta}}</td>
+                                          <td>{{ date("d/m/Y",strtotime($consulta->fecha))}}</td>
+                                          <td>{{ date("H:i:s",strtotime($consulta->hora))}}</td>
+                                          <td>{{$consulta->indicaciones}}</td>
+                                          <td>{{$consulta->sintomatologia}}</td>
+                                          <td>{{$consulta->consulta_por}}</td>
                                           <td>
-                                             <a class="btn btn-warning btn-sm" ><i class="fas fa-eye"></i>Ver</a> 
+                                             <a class="btn btn-warning btn-sm" href="{{url('ver_consulta/'.$consulta->pk_consulta.'')}}" ><i class="fas fa-eye"></i>Ver</a> 
                                           </td>
                                        </tr>
                                        @endforeach
@@ -128,13 +132,12 @@
                                </div>
                             </div>
                             <div class="tab-pane fade" id="idAltas" role="tabpanel" aria-labelledby="idAltas-tab">
-                                <div class="row"><button class="btn btn-success"><i class="fas fa-plus"></i> </button> </div>
+                                {{-- <div class="row"><button class="btn btn-success"><i class="fas fa-plus"></i> </button> </div> --}}
                                 <br>
                                 <div class="row">
                                     <div class="col-12">
                                        <table class="table table-hover">
                                           <tr>
-                                             <th>Ingreso</th>
                                              <th>Fecha</th>
                                              <th>Hora</th>
                                              <th>Indicaciones</th>
@@ -145,13 +148,12 @@
                                           @foreach($altas as $alta)
                                           <tr>
    
-                                             <td>Nombre 1</td>
-                                             <td>Nombre 1</td>
-                                             <td>Nombre 1</td>
-   
-                                             <td>25 sdsfsdlfd</td>
+                                             <td>{{ date("d/m/Y",strtotime($alta->fecha))}}</td>
+                                             <td>{{ date("H:i:s",strtotime($alta->hora))}}</td>
+                                             <td>{{$alta->indicaciones}}</td>
+
                                              <td>
-                                                <a class="btn btn-warning btn-sm" ><i class="fas fa-eye"></i>Ver</a> 
+                                                <a class="btn btn-warning btn-sm" href="{{url('ver_alta/'.$alta->pk_alta.'')}}" ><i class="fas fa-eye"></i>Ver</a> 
                                              </td>
                                           </tr>
                                           @endforeach
@@ -163,16 +165,17 @@
 
 
                             <div class="tab-pane fade" id="idExamenes" role="tabpanel" aria-labelledby="idExamenes-tab">
-                                <div class="row"><button class="btn btn-success"><i class="fas fa-plus"></i> </button> </div>
+                                <div class="row"><a class="btn btn-success" href="{{url('crear_examen/')}}" ><i class="fas fa-plus"></i> </a> </div>
                                 <br>
                                 <div class="row">
                                     <div class="col-12">
                                         <table class="table table-hover">
                                            <tr>
-                                              <th>Ingreso</th>
-                                              <th>Fecha</th>
-                                              <th>Hora</th>
-                                              <th>Indicaciones</th>
+                                              <th>Nombre Examen</th>
+                                              <th>Fecha Asignacion</th>
+                                              <th>Fecha Recibido</th>
+                                              <th>Hora Recibido</th>
+                                              <th>Observacioness</th>
                                               <th>#</th>
  
                                            </tr>
@@ -180,13 +183,14 @@
                                            @foreach($examenes as $exam)
                                            <tr>
     
-                                              <td>Nombre 1</td>
-                                              <td>Nombre 1</td>
-                                              <td>Nombre 1</td>
+                                              <td>{{$exam->nombre_examen}}</td>
+                                              <td>{{ date("d/m/Y",strtotime($exam->fecha_asignacion))}}</td>
+                                              <td>{{ date("d/m/Y",strtotime($exam->fecha_resultado))}}</td>
+                                              <td>{{ date("H:i:s",strtotime($exam->hora_resultado))}}</td>
     
-                                              <td>25 sdsfsdlfd</td>
+                                              <td>{{$exam->observacion}}</td>
                                               <td>
-                                                 <a class="btn btn-warning btn-sm" ><i class="fas fa-eye"></i>Ver</a> 
+                                                 <a class="btn btn-warning btn-sm" href="{{url('ver_examen/'.$exam->pk_examen.'')}}" ><i class="fas fa-eye"></i>Ver</a> 
                                               </td>
                                            </tr>
                                            @endforeach
@@ -197,6 +201,40 @@
                              </div>
 
                             <div class="tab-pane fade" id="idTratamientos" role="tabpanel" aria-labelledby="idTratamientos-tab">
+                                {{-- <div class="row"><button class="btn btn-success"><i class="fas fa-plus"></i> </button> </div> --}}
+                                <br>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <table class="table table-hover">
+                                           <tr>
+                                              <th>Tipo Diagnostico </th>
+                                              <th>Fecha</th>
+                                              <th>Hora</th>
+                                              <th>Observaciones</th>
+                                              <th>#</th>
+ 
+                                           </tr>
+                                           @if($historialDiagnosticos!=null)
+                                           @foreach($historialDiagnosticos as $trat)
+                                           <tr>
+    
+                                              <td>{{$trat->nombreTipoDiagnostico}}</td>
+                                              <td>{{ date("d/m/Y",strtotime($trat->fecha))}}</td>
+                                              <td>{{ date("H:i:s",strtotime($trat->hora))}}</td>
+                                              <td>{{$trat->observaciones}}</td>
+                                              <td>
+                                                 <a class="btn btn-warning btn-sm" href="{{url('ver_diagnostico/'.$consulta->pk_consulta.'')}}" ><i class="fas fa-eye"></i>Ver</a> 
+                                              </td>
+                                           </tr>
+                                           @endforeach
+                                           @endif
+                                        </table>
+                                     </div>
+                                 </div>
+                             </div>
+
+
+                             {{-- <div class="tab-pane fade" id="idHistorial" role="tabpanel" aria-labelledby="idHistorial-tab">
                                 <div class="row"><button class="btn btn-success"><i class="fas fa-plus"></i> </button> </div>
                                 <br>
                                 <div class="row">
@@ -210,8 +248,8 @@
                                               <th>#</th>
  
                                            </tr>
-                                           @if($tratamientos!=null)
-                                           @foreach($tratamientos as $trat)
+                                           @if($histEnfermedades!=null)
+                                           @foreach($histEnfermedades as $historial)
                                            <tr>
     
                                               <td>Nombre 1</td>
@@ -228,42 +266,7 @@
                                         </table>
                                      </div>
                                  </div>
-                             </div>
-
-
-                             <div class="tab-pane fade" id="idHistorial" role="tabpanel" aria-labelledby="idHistorial-tab">
-                                <div class="row"><button class="btn btn-success"><i class="fas fa-plus"></i> </button> </div>
-                                <br>
-                                <div class="row">
-                                    <div class="col-12">
-                                        <table class="table table-hover">
-                                           <tr>
-                                              <th>Ingreso</th>
-                                              <th>Fecha</th>
-                                              <th>Hora</th>
-                                              <th>Indicaciones</th>
-                                              <th>#</th>
- 
-                                           </tr>
-                                           @if($historialEnf!=null)
-                                           @foreach($historialEnf as $historial)
-                                           <tr>
-    
-                                              <td>Nombre 1</td>
-                                              <td>Nombre 1</td>
-                                              <td>Nombre 1</td>
-    
-                                              <td>25 sdsfsdlfd</td>
-                                              <td>
-                                                 <a class="btn btn-warning btn-sm" ><i class="fas fa-eye"></i>Ver</a> 
-                                              </td>
-                                           </tr>
-                                           @endforeach
-                                           @endif
-                                        </table>
-                                     </div>
-                                 </div>
-                             </div>
+                             </div> --}}
 
 
 
