@@ -15,13 +15,18 @@
     </ul>
 
     {{-- Navbar right links --}}
+    <div style="margin-left: 35%; color:black; font-size: 20px;">
+        {{ Carbon\Carbon::now()->format('d M Y')}}
+    </div>
+    
     <ul class="navbar-nav ml-auto">
+
         {{-- Custom right links --}}
         @yield('content_top_nav_right')
 
         {{-- Configured right links --}}
         @each('adminlte::partials.navbar.menu-item', $adminlte->menu('navbar-right'), 'item')
-
+        
         {{-- User menu link --}}
         @if(Auth::user())
             @if(config('adminlte.usermenu_enabled'))
