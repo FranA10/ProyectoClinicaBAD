@@ -72,7 +72,7 @@ class DatosEmpleadoController extends Controller
 
         ]);
 
-     //   try {
+        try {
             $passCode = uniqid();
             $email = $request->get('idcorreo');
 
@@ -112,10 +112,10 @@ class DatosEmpleadoController extends Controller
             return redirect()->back()
                 ->with('success', 'Created successfully!');
 
-     //   } catch (\Exception $e){
-        //    return redirect()->back()
-           //     ->with('error', 'Error during the creation!');
-      //  }
+        } catch (\Exception $e){
+            return redirect()->back()
+                ->with('error', 'Error during the creation!');
+        }
 }
     //Guardar Paciente
     public function savePaciente(Request $request){
@@ -134,6 +134,7 @@ class DatosEmpleadoController extends Controller
 
   try {
       $passCode = uniqid();
+      $email = $request->get('idcorreo');
 
       $persona= new DatosPersonales();
       $persona->pk_num_personal=DatosPersonales::count()+1;
@@ -161,6 +162,11 @@ class DatosEmpleadoController extends Controller
       $persona->estado=1;
       $persona->usr_modify=auth()->id();
       $persona->save();
+    
+      $vdatos= new \stdClass();
+      $vdatos->usr = $email;
+      $vdatos->pass = $passCode;
+      Mail::to($email)->send(new EmergencyCallReceived($vdatos));
 
       return redirect()->back()
           ->with('success', 'Created successfully!');
