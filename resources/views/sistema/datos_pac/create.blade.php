@@ -1,7 +1,7 @@
 @extends('adminlte::page')
 
 @section('content_header')
-    <h3>Registrar nuevo empleado </h3>
+    <h3>Registrar nuevo paciente </h3>
 @endsection
 
 @section('content')
@@ -10,11 +10,10 @@
     <div class="col-md-11">
         <div class="card card-info">
             <div class="card-header">
-              <h3 class="card-title">Datos personales</h3>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <form action="{{ route('saveDE')}}" method="POST">
+              <form action="{{ route('saveDP')}}" method="POST">
                 @csrf
                 <!-- text input -->
                 <div class="row">
@@ -67,9 +66,14 @@
                 <div class="row">
                     <div class="col-6">
                         <div class="form-group">
-                            <label>Genero</label>
-                            <input type="text"  id="idGenero" name="idGenero" class="form-control" placeholder="Enter ...">
-                          </div>
+                        <label>Genero</label>
+                        <select class="form-control" id="idGenero" name="idGenero">
+                           <option value="0">Elegir...</option>
+                            @foreach($catGenero as $objeto)
+                              <option value="{{$objeto->pk_genero}}">{{$objeto->nombre_genero}}</option>
+                              @endforeach
+                        </select>
+                        </div>
                     </div>
                     <div class="col-6">
                         <div class="form-group">
@@ -81,11 +85,13 @@
                 <div class="row">
                     <div class="col-6">
                         <div class="form-group">
-                            <label>País</label>
-                            <input type="text"  id="idPais" name="idPais" class="form-control" placeholder="Enter ...">
-                            @error('idPais')
-                              <p class="error-message">{{ $message }}</p>
-                            @enderror
+                            <label>País</label>                            
+                            <select class="form-control" id="idPais" name="idPais">
+                           <option value="0">Ingrese un pais</option>
+                            @foreach($catPais as $objeto)
+                              <option value="{{$objeto->pk_pais}}">{{$objeto->nombre}}</option>
+                              @endforeach
+                            </select>
                           </div>
                     </div>
                     <div class="col-6">
@@ -105,10 +111,12 @@
                     <div class="col-6">
                         <div class="form-group">
                             <label>Estado civil</label>
-                            <input type="text"  id="idEstadoC" name="idEstadoC" class="form-control" placeholder="Enter ...">
-                            @error('idEstadoC')
-                              <p class="error-message">{{ $message }}</p>
-                            @enderror
+                            <select class="form-control" id="idEstadoC" name="idEstadoC">
+                           <option value="0">Elegir...</option>
+                            @foreach($catEstadoc as $objeto)
+                              <option value="{{$objeto->pk_estado_civil}}">{{$objeto->nombre}}</option>
+                              @endforeach
+                        </select>
                         </div>
                     </div>
                 </div>
@@ -116,14 +124,24 @@
                     <div class="col-6">
                         <div class="form-group">
                             <label>Profesión</label>
-                            <input type="text"  id="idprofesion" name="idprofesion" class="form-control" placeholder="Enter ...">
-                          </div>
+                            <select class="form-control" id="idprofesion" name="idprofesion">
+                           <option value="0">Seleccione una profesion</option>
+                            @foreach($catProfesion as $objeto)
+                              <option value="{{$objeto->pk_profesion}}">{{$objeto->nombre}}</option>
+                              @endforeach
+                            </select>
+                            </div>
                     </div>
                     <div class="col-6">
                         <div class="form-group">
                             <label>Tipo de sangre</label>
-                            <input type="text" id="idtsangre" name="idtsangre" class="form-control" placeholder="Enter ..." >
-                        </div>
+                            <select class="form-control" id="idtsangre" name="idtsangre">
+                           <option value="0">Seleccione un tipo</option>
+                            @foreach($catTSangre as $objeto)
+                              <option value="{{$objeto->pk_codsangre}}">{{$objeto->pk_codsangre}}</option>
+                              @endforeach
+                            </select>
+                           </div>
                     </div>
                 </div>
                 <div class="row">
@@ -135,8 +153,6 @@
                     </div>
                     <div class="col-6">
                         <div class="form-group">
-                            <label>Licencia médica</label>
-                            <input type="text" id="idLicMed" name="idLicMed" class="form-control" placeholder="Enter ..." >
                         </div>
                     </div>
                 </div>
@@ -144,7 +160,7 @@
                     <div class="col-6">
                         <div class="form-group">
                             <label>Documento de identidad</label>
-                            <input type="text"  id="iddoc" name="iddoc" class="form-control" placeholder="Enter ...">
+                            <input type="text"  id="iddoc" name="iddoc" class="form-control" placeholder="Ingrese su Documento de identidad">
                           </div>
                     </div>
                     <div class="col-6">
@@ -159,13 +175,22 @@
                         <div class="form-group">
                             <label>Número de documento tributario</label>
                             <input type="text"  id="idnit" name="idnit" class="form-control" placeholder="Enter ...">
-                          </div>
+                        </div>
                     </div>
                     <div class="col-6">
+                        <div class="form-group">
+                            <label>Centro Hospitalario</label>
+                            <select class="form-control" id="idcentroH" name="idcentroH">
+                           <option value="0">Seleccione un centro</option>
+                            @foreach($catCentro as $objeto)
+                              <option value="{{$objeto->pk_centro}}">{{$objeto->nom_centro}}</option>
+                              @endforeach
+                            </select>
+                        </div>
                     </div>
                 </div>
 <div class="row">
-    <a class="btnt btn-dark btn-sm" href="{{ route('FormDE') }}" tabindex="5"> Cancelar</a>
+    <a class="btnt btn-dark btn-sm" href="{{ route('FormDP') }}" tabindex="5"> Cancelar</a>
     <button class="btn btn-primary btn-sm" tabindex="4">Crear</button>
 </div>
               </form>
