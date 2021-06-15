@@ -326,12 +326,12 @@ return [
         ['header' => 'MEDICINA',
         'can'     => 'ver-examenes',
         ],
-        [
-            'text'        => 'Examenes',
-            'route'       => 'ver-examenes',
-            'icon'        => 'fas fa-microscope fa-fw',
-            'can'         => 'ver-examenes',
-        ],
+        // [
+        //     'text'        => 'Examenes',
+        //     'route'       => 'ver-examenes',
+        //     'icon'        => 'fas fa-microscope fa-fw',
+        //     'can'         => 'ver-examenes',
+        // ],
         [
             'text'        => 'Códigos de diágnostico',
             'route'       => 'listCD',

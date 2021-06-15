@@ -42,8 +42,20 @@ class TipoExamenController extends Controller
      */
     public function store(Request $request)
     {
+        $validator = $this->validate($request,[
+            'nombre_tipo_exam'=>'required|string|max:15',
+            'descripocion_tipo_exam'=>'required|string|max:200',
+            'precio'=>'required',
+        ]);
+        
         $tipoExam= new TipoExamen();
-        $tipoExam->pk_tipo_examen=TipoExamen::count()+1;
+        $ultimo=TipoExamen::latest('pk_tipo_examen')->first();
+        if($ultimo!=null)
+        {
+         $tipoExam->pk_tipo_examen=intval($ultimo->pk_tipo_examen)+1;
+        }else{
+         $tipoExam->pk_tipo_examen=1; 
+        }
         $tipoExam->nombre_tipo_exam= $request->get('nombre');
         $tipoExam->descripcion_tipo_exam= $request->get('descripcion');
         $tipoExam->precio=$request->get('precio');
