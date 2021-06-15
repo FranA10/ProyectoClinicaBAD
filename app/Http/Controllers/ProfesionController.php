@@ -7,6 +7,16 @@ use App\Profesion;
 
 class ProfesionController extends Controller
 {
+    public function __construct()
+    {   
+        //$this->middleware('can:<<nombre del permiso>>')->only('<<nombre/s del metodo del controlador>>');
+        $this->middleware('can:listPF')->only('mostrarProfesiones');
+        $this->middleware('can:formPF')->only('verFormProfesion', 'guardarProfesion');
+        $this->middleware('can:editFormPF');
+
+
+    }
+
     //formulario de profesiones
     public function verFormProfesion(){
         return View('sistema/profesion/crear');

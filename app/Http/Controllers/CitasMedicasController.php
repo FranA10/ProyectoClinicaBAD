@@ -18,6 +18,18 @@ class CitasMedicasController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+
+    public function __construct()
+    {   
+        //$this->middleware('can:<<nombre del permiso>>')->only('<<nombre/s del metodo del controlador>>');
+        $this->middleware('can:ver_listado_citas')->only('index');
+        $this->middleware('can:ver_listado_citas.create')->only('create', 'store');
+        $this->middleware('can:ver_listado_citas.edit')->only('edit', 'update');
+        $this->middleware('can:ver_listado_citas.generate')->only('create', 'store');
+
+    }
+
     public function index()
     {
         $citas_medica = CitaMedica::paginate(10);

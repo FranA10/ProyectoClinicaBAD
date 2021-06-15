@@ -9,6 +9,14 @@ use DB;
 class TipoSangreController extends Controller
 {
     //formulario del proceso Tipo Sangre
+
+    public function __construct()
+    {   
+        //$this->middleware('can:<<nombre del permiso>>')->only('<<nombre/s del metodo del controlador>>');
+        $this->middleware('can:listarTS');
+
+    }
+
     public function vistaProceso(){
         return View('sistema/tipo_sangre/ejecutarCrear');
     }
