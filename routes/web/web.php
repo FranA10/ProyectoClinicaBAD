@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-//use admin\UsuarioController;
+use admin\UsuarioController;
 use admin\RoleController;
 
 /*
@@ -64,3 +64,14 @@ Route::patch('editarCatDig/{id}','CatDiagnosticoController@editarCatDig')->name(
 //Route::resource('/usuarios', UsuarioController::class)->middleware('can:admin.usuarios')->names('admin.usuarios');
 Route::resource('usuarios', UsuarioController::class)->names('admin.usuarios');
 Route::resource('roles', RoleController::class)->names('admin.roles');
+
+
+//Administracion datos de empleados
+Route::get('EmpList', 'DatosEmpleadoController@MostrarEmpleados')->name('ListDE');
+Route::get('FormularioEmpleado', 'DatosEmpleadoController@FormEmp')->name('FormDE');
+Route::post('SaveEmpleado', 'DatosEmpleadoController@savePerson')->name('saveDE');
+
+//Administracion datos de pacientes
+//Route::get('PactList', 'DatosEmpleadoController@MostrarEmpleados')->name('ListDE');
+Route::get('FormularioPaciente', 'DatosEmpleadoController@FormPac')->name('FormDP');
+//Route::post('SavePaciente', 'DatosEmpleadoController@savePerson')->name('saveDE');

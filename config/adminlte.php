@@ -255,7 +255,7 @@ return [
         //     'label_color' => 'success',
         // ],
         ['header' => 'CONFIGURACIÓN DE SISTEMA',
-         //'can'  => '',   
+         'can'  => 'admin.usuarios.index',   
         ],
         [
             'text'        => 'Usuarios',
@@ -268,133 +268,121 @@ return [
             'text'        => 'Roles',
             'route'       => 'admin.roles.index',
             'icon'        => 'fas fa-users-cog fa-fw',
-            'can'         => 'admin.usuarios.index',
+            'can'         => 'admin.roles.index',
         ],
         [
             'text'        => 'Centros Hospitalarios',
             'route'       => 'listCentro',
             'icon'        => 'fas fa-hospital fa-fw',
-            //'can'         => '',
+            'can'         => 'listCentro',
         ],
         [
             'text'        => 'Ajustes iniciales',
             'route'       => 'configuracionRoot',
             'icon'        => ' 	fa fa-cogs fa-fw',
-            //'can'         => '',
+            'can'         => 'configuracionRoot',
         ],
         [
             'text'        => 'Tipos de Sangre',
             'route'       => 'listarTS',
             'icon'        => 'fa fa-heart fa-fw',
-            //'can'         => '',
+            'can'         => 'listarTS',
         ],
         [
             'text'        => 'Tipos de Anexo',
             'url'       => 'tipo-anexo',
-            'icon'        => 'fas fa-file',
-            //'can'         => '',
+            'icon'        => 'fas fa-paperclip',
+            'can'         => 'ver-tipos-anexo',
         ],
         [
             'text'        => 'Tipos de Examenes',
             'url'       => 'tipo-examen',
-            'icon'        => 'fas fa-file',
-            //'can'         => '',
+            'icon'        => 'fas fa-file-alt',
+            'can'         => 'ver-tipos-examen',
         ],
 
 
-        ['header' => 'ADMINISTRATIVA'],
+        ['header' => 'ADMINISTRATIVA',
+         'can'  => 'listPF',
+        ],
         [
-            'text' => 'Datos personales',
-            'url'  => 'admin/settings',
+            'text' => 'Administrar Empleados',
+            'route' => 'ListDE',
+            'icon' => 'fa fa-address-card',
+            'can'  => 'ListDE',
+
+        ],
+        [
+            'text' => 'Administrar Pacientes',
+            'route' => 'FormDP',
             'icon' => 'fa fa-address-card',
         ],
         [
             'text'        => 'Profesiones',
             'route'       => 'listPF',
             'icon'        => 'fa fa-graduation-cap fa-fw',
-            //'can'         => '',
+            'can'         => 'listPF',
         ],
-        ['header' => 'MEDICINA'],
+        ['header' => 'MEDICINA',
+        'can'     => 'ver-examenes',
+        ],
+        [
+            'text'        => 'Examenes',
+            'route'       => 'ver-examenes',
+            'icon'        => 'fas fa-microscope fa-fw',
+            'can'         => 'ver-examenes',
+        ],
         [
             'text'        => 'Códigos de diágnostico',
-            'route'       => 'listPF',
+            'route'       => 'listCD',
             'icon'        => 'fas fa-stethoscope fa-fw',
-            //'can'         => '',
+            'can'         => 'listCD',
         ],
         [
             'text'        => 'Expedientes',
-            'url'       => 'expedientes',
+            'url'         => 'expedientes',
             'icon'        => 'fas fa-book-medical',
-            //'can'         => '',
+            'can'         => 'ver-expedientes',
         ],
-        // [
-        //     'text'    => 'multilevel',
-        //     'icon'    => 'fas fa-fw fa-share',
-        //     'submenu' => [
-        //         [
-        //             'text' => 'level_one',
-        //             'url'  => '#',
-        //         ],
-        //         [
-        //             'text'    => 'level_one',
-        //             'url'     => '#',
-        //             'submenu' => [
-        //                 [
-        //                     'text' => 'level_two',
-        //                     'url'  => '#',
-        //                 ],
-        //                 [
-        //                     'text'    => 'level_two',
-        //                     'url'     => '#',
-        //                     'submenu' => [
-        //                         [
-        //                             'text' => 'level_three',
-        //                             'url'  => '#',
-        //                         ],
-        //                         [
-        //                             'text' => 'level_three',
-        //                             'url'  => '#',
-        //                         ],
-        //                     ],
-        //                 ],
-        //             ],
-        //         ],
-        //         [
-        //             'text' => 'level_one',
-        //             'url'  => '#',
-        //         ],
-        //     ],
-        // ],
 
 
         
        
-        ['header' => 'Consulta medica'],
+        ['header' => 'CONSULTA MEDICA',
+        'can'         => 'ver_historial_diagnostico',
+        ],
         [
             'text'       => 'Historico de diagnosticos',
-            'icon' => 'fas fa-hospital-user',
+            'icon'       => 'fas fa-hospital-user',
             'url'        => '/historial_diagnostico',
+            'can'        => 'ver_historial_diagnostico',
+
         ],
-        [
-            'text'       => 'Categorias de diagnostico',
-            'icon'       =>   'fas fa-procedures',
-            'url'        => '/cat_diagnostico',
-        ],
+        // [
+        //     'text'       => 'Categorias de diagnostico',
+        //     'icon'       =>   'fas fa-procedures',
+        //     'url'        => '/cat_diagnostico',
+        // ],
 
         [
             'text'       => 'Consulta',
-            'icon' => 'fas fa-clinic-medical',
+            'icon'       => 'fas fa-clinic-medical',
             'url'        => '/consulta_medica',
+            'can'        => 'ver_listado_consultas',
         ],
         [
             'text'       => 'Signos vitales',
             'icon' => 'fas fa-stethoscope',
             'url'        => '/signo-vital',
+            'can'        => 'ver_listado_signos',
+
         ],
         [
             'text'       => 'Citas medicas',
             'icon' => '	fas fa-band-aid',
             'url'        => '/citas_medicas',
+            'can'        => 'ver_listado_citas',
+
         ],
         
     ],

@@ -15,6 +15,16 @@ class ConsultaMedicaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct()
+    {   
+        //$this->middleware('can:<<nombre del permiso>>')->only('<<nombre/s del metodo del controlador>>');
+        $this->middleware('can:ver_listado_consultas')->only('index');
+        $this->middleware('can:ver_listado_consultas.create')->only('create', 'store');
+        $this->middleware('can:ver_listado_consultas.edit')->only('edit','update');
+
+    }
+
     public function index()
     {
         

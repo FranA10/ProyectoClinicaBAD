@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers\admin;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\User;
-use Spatie\Permission\Models\Role;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Spatie\Permission\Models\Role;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
+
 class UsuarioController extends Controller
 {
     /**
@@ -33,9 +36,12 @@ class UsuarioController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function create()
     {
         //
+
+        return view('sistema.usuarios.registrar');
     }
 
     /**
@@ -44,9 +50,22 @@ class UsuarioController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $data)
     {
         //
+        $data->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],    
+        ]);
+
+        User::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => Hash::make($data['password']),
+        ]);
+
+        return redirect()->route('admin.usuarios.index')->with('info', 'El usuario se creó con éxito');
     }
 
     /**
@@ -97,5 +116,14 @@ class UsuarioController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function validator(array $data)
+    {
+        return Validator::make($data, [
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+        ]);
     }
 }

@@ -8,6 +8,16 @@ use App\CentroHospitalario;
 
 class CentroHospitalarioController extends Controller
 {
+    public function __construct()
+    {   
+        //$this->middleware('can:<<nombre del permiso>>')->only('<<nombre/s del metodo del controlador>>');
+        $this->middleware('can:listCentro')->only('mostrarCentros');
+        $this->middleware('can:formularioCentros')->only('crearCentros', 'save');
+        $this->middleware('can:editFormCentro')->only('actualizarCentros', 'editarCentro');
+
+
+    }
+
     //formulario de usuarios
     public function crearCentros(){
         return View('sistema/centros_hospitalarios/crear');
