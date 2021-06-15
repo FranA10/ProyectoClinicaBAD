@@ -33,6 +33,13 @@ class DatosEmpleadoController extends Controller
         return View('sistema/datos_emp/listar')->with(['persona'=>$persona]);
     }
 
+    public function MostrarPacientes(){
+        $persona= DatosPersonales::where("empleado","=","0")->get();
+
+        return View('sistema/datos_pac/listar')->with(['persona'=>$persona]);
+    }
+    
+
     public function FormEmp(){
         $catEstadocivil = EstadoCivil::paginate(2);
         $catGenero = Genero::paginate(2);

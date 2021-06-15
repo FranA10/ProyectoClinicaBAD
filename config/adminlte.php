@@ -314,7 +314,7 @@ return [
         ],
         [
             'text' => 'Administrar Pacientes',
-            'route' => 'FormDP',
+            'route' => 'ListaDP',
             'icon' => 'fa fa-address-card',
         ],
         [

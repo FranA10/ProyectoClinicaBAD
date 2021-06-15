@@ -1,7 +1,7 @@
 @extends('adminlte::page')
 
 @section('content_header')
-    <h3>Empleados</h3>
+    <h3>Pacientes</h3>
 @endsection
 
 
@@ -13,7 +13,7 @@
               <div class="card">
                 <div class="card-header">
             
-                 <a class="btn btn-success" href="{{ url('FormularioEmpleado')  }}">Agregar</a>
+                 <a class="btn btn-success" href="{{ url('FormularioPaciente')  }}">Agregar</a>
                   <div class="card-tools">
                     <div class="input-group input-group-sm" style="width: 150px;">
                     </div>

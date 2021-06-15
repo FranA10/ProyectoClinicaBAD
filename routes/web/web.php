@@ -71,7 +71,7 @@ Route::get('FormularioEmpleado', 'DatosEmpleadoController@FormEmp')->name('FormD
 Route::post('SaveEmpleado', 'DatosEmpleadoController@savePerson')->name('saveDE');
 
 //Administracion datos de pacientes
-//Route::get('PactList', 'DatosEmpleadoController@MostrarEmpleados')->name('ListDE');
+Route::get('PactList', 'DatosEmpleadoController@MostrarPacientes')->name('ListDP');
 Route::get('FormularioPaciente', 'DatosEmpleadoController@FormPac')->name('FormDP');
 Route::post('SavePaciente', 'DatosEmpleadoController@savePaciente')->name('saveDP');
 
