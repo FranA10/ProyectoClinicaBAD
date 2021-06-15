@@ -38,7 +38,7 @@
                       <td>{{$tipoex->descripcion_tipo_exam}} </td>
                       <td><span class="tag tag-success">$ {{number_format($tipoex->precio,2)}} </span></td>
                       <td>
-                        <form action="{{ route('tipo-examen.destroy', $tipoex->pk_tipo_examen) }}" method="POST" class="eliminarRegistro">
+                        <form action="{{ route('ver-tipos-examen.destroy', $tipoex->pk_tipo_examen) }}" method="POST" class="eliminarRegistro">
                          @method('DELETE')
                          @csrf 
                         <a class="btn btn-warning btn-sm" href="{{url('tipo-examen/'.$tipoex->pk_tipo_examen.'/edit')}}"><i class="fas fa-pencil-alt"></i></a> 

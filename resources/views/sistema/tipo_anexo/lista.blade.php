@@ -25,13 +25,12 @@
                     <tr>
                       <th>Nombre</th>
                       <th>#</th>
-
                     </tr>
                     @foreach($objetos as $objeto)
                     <tr>
                       <td>{{$objeto->tipo_anexo}}</td>
                       <td>
-                        <form action="{{ route('tipo-anexo.destroy', $objeto->id_tipo_anexo) }}" method="POST" class="eliminarRegistro">
+                        <form action="{{ route('ver-tipos-anexo.destroy', $objeto->id_tipo_anexo) }}" method="POST" class="eliminarRegistro">
                          @method('DELETE')
                          @csrf 
                         <a class="btn btn-warning btn-sm" href="{{url('tipo-anexo/'.$objeto->id_tipo_anexo.'/edit')}}"><i class="fas fa-pencil-alt"></i></a> 
