@@ -10,6 +10,8 @@ use App\Pais;
 use App\Profesion;
 use App\TipoSangre;
 use App\CentroHospitalario;
+use App\Mail\EmergencyCallReceived;
+use Illuminate\Support\Facades\Mail;
 use GuzzleHttp\Psr7\Message;
 
 class DatosEmpleadoController extends Controller
@@ -27,7 +29,7 @@ class DatosEmpleadoController extends Controller
     
     public function MostrarEmpleados(){
         $persona= DatosPersonales::where("empleado","=","1")->get();
-        
+
         return View('sistema/datos_emp/listar')->with(['persona'=>$persona]);
     }
 
@@ -70,8 +72,9 @@ class DatosEmpleadoController extends Controller
 
         ]);
 
-        try {
+     //   try {
             $passCode = uniqid();
+            $email = $request->get('idcorreo');
 
             $persona= new DatosPersonales();
             $persona->pk_num_personal=DatosPersonales::count()+1;
@@ -95,19 +98,24 @@ class DatosEmpleadoController extends Controller
             $persona->fecha_nacimiento='01/05/2021';//$request->get('idfnacimiento');
             $persona->tel_contacto=$request->get('idTel');
             $persona->direccion=$request->get('iddireccion');
-            $persona->correo = $request->get('idcorreo');
+            $persona->correo = $email;
             $persona->clave = bcrypt($passCode);
             $persona->estado=1;
             $persona->usr_modify=auth()->id();
             $persona->save();
 
+            $vdatos= new \stdClass();
+            $vdatos->usr = $email;
+            $vdatos->pass = $passCode;
+            Mail::to($email)->send(new EmergencyCallReceived($vdatos));
+
             return redirect()->back()
                 ->with('success', 'Created successfully!');
 
-        } catch (\Exception $e){
-            return redirect()->back()
-                ->with('error', 'Error during the creation!');
-        }
+     //   } catch (\Exception $e){
+        //    return redirect()->back()
+           //     ->with('error', 'Error during the creation!');
+      //  }
 }
     //Guardar Paciente
     public function savePaciente(Request $request){
